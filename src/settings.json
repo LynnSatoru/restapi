@@ -1,0 +1,674 @@
+{
+  "name": "LynnSatoru API",
+  "version": "v1.0.0",
+  "description": "Simple and easy to use API.",
+  "bannerImage": "/src/banner.jpg",
+  "header": {
+    "status": "Online!"
+  },
+  "apiSettings": {
+    "creator": "LynnSatoru",
+    "apikey": ["velapi"]
+  },
+  "categories": [
+    {
+      "name": "AI (Artificial Intelligence)",
+      "items": [
+        {
+          "name": "Avelora AI",
+          "desc": "Talk with Avelora",
+          "path": "/ai/avelora?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text for vioo to respond to"
+          }
+       },
+        {
+          "name": "OpenAI",
+          "desc": "Openai chat",
+          "path": "/ai/openai?text=",
+          "status": "ready",
+          "params": {
+            "text": "Teks atau perintah untuk OpenAI"
+          }
+        },
+        {
+          "name": "Deepseek",
+          "desc": "Deepseek ai",
+          "path": "/ai/deepseek?text=",
+          "status": "ready",
+          "params": {
+            "text": "Teks atau perintah untuk Deepseek"
+          }
+        },
+        {
+          "name": "LuminAI",
+          "desc": "Talk with luminai",
+          "path": "/ai/luminai?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text for luminai to respond to"
+          }
+        },
+        {
+          "name": "Blackbox",
+          "desc": "Send text to Blackbox Ai",
+          "path": "/ai/blackbox?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text you want to send to Blackbox for response"
+          }
+        },
+        {
+          "name": "HydroMind",
+          "desc": "See the list of supported AI models here: https://mind.hydrooo.web.id",
+          "path": "/ai/hydromind?text=&model=",
+          "status": "ready",
+          "params": {
+            "text": "Teks atau perintah untuk chat AI",
+            "model": "See the list of supported AI models here: https://mind.hydrooo.web.id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gateway Orderkuota",
+      "items": [
+        {
+          "name": "Create Payment",
+          "desc": "Create QRIS payment",
+          "path": "/orderkuota/createpayment?apikey=&amount=&codeqr=",
+          "status": "Active",
+          "params": {
+            "apikey": "API Key Anda",
+            "amount": "Jumlah pembayaran",
+            "codeqr": "Kode untuk QR"
+          }
+        },
+        {
+          "name": "Cek Status",
+          "desc": "Cek status pembayaran",
+          "path": "/orderkuota/cekstatus?apikey=&merchant=&keyorkut=",
+          "status": "Active",
+          "params": {
+            "apikey": "API Key Anda",
+            "merchant": "Merchant ID",
+            "keyorkut": "Kunci atau kode order"
+          }
+        },
+        {
+          "name": "Cek Saldo",
+          "desc": "Cek saldo akun OrderKuota",
+          "path": "/tools/ceksaldo?apikey=&memberID=&pin=&password=",
+          "status": "Active",
+          "params": {
+            "apikey": "API Key Anda",
+            "memberID": "ID Member",
+            "pin": "PIN keamanan",
+            "password": "Password akun"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Random",
+      "items": [
+        {
+  "name": "AnimeQuote",
+  "desc": "kutipan anime dari Otakotaku",
+  "path": "/random/quote",
+  "status": "ready",
+  "params": {}
+},
+        {
+          "name": "Blue Archive",
+          "desc": "Blue Archive Random Images",
+          "path": "/random/ba",
+          "status": "ready"
+        },
+        {
+          "name": "Random Waifu",
+          "desc": "Random foto waifu",
+          "path": "/random/waifu",
+          "status": "ready",
+          "params": {
+            "text": "Tidak perlu input, langsung dapet random waifu"
+          }
+        },
+        {
+          "name": "Random Nsfw",
+          "desc": "Random foto nsfw",
+          "path": "/random/nsfw",
+          "status": "ready",
+          "params": {
+            "text": "Tidak perlu input, langsung dapet random NSFW"
+          }
+        },
+        {
+          "name": "Pap Ayang",
+          "desc": "Random pap ayang",
+          "path": "/random/papayang",
+          "status": "ready",
+          "params": {
+            "text": "Tidak perlu input, langsung dapet pap ayang"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Downloader",
+      "items": [
+        {
+          "name": "Mediafire",
+          "desc": "Downloader mediafire",
+          "path": "/download/mediafire?apikey=&url=",
+          "status": "ready",
+          "params": {
+            "url": "Link media"
+          }
+        },
+        {
+          "name": "Aio",
+          "desc": "All in downloader",
+          "path": "/download/aio?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link media"
+          }
+        },
+        {
+          "name": "Tiktok",
+          "desc": "Downloader Tiktok",
+          "path": "/download/tiktok?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link Tiktok"
+          }
+        },
+        {
+          "name": "Tiktok V2",
+          "desc": "Downloader tiktok v2",
+          "path": "/download/tiktok-v2?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link tiktok"
+          }
+        },
+        {
+          "name": "Twitter",
+          "desc": "Downloader twitter",
+          "path": "/download/twitter?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link twitter"
+          }
+        },
+        {
+          "name": "Facebook",
+          "desc": "Downloader facebook",
+          "path": "/download/facebook?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link facebook"
+          }
+        },
+        {
+          "name": "Ytdl",
+          "desc": "Downloader youtube",
+          "path": "/download/ytdl?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link youtube"
+          }
+        },
+        {
+          "name": "Ytmp3",
+          "desc": "Downloader youtube mp3",
+          "path": "/download/ytmp3?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link youtube"
+          }
+        },
+        {
+          "name": "Ytmp4",
+          "desc": "Downloader youtube mp4",
+          "path": "/download/ytmp4?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link youtube"
+          }
+        },
+        {
+          "name": "Ytdl V2",
+          "desc": "Downloader youtube v2",
+          "path": "/download/ytdl-v2?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link youtube"
+          }
+        },
+        {
+          "name": "Instagram",
+          "desc": "Downloader instagram",
+          "path": "/download/instagram?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link instagram"
+          }
+        },
+        {
+          "name": "Pinterest",
+          "desc": "Downloader pinterest",
+          "path": "/download/pinterest?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link pinterest"
+          }
+        },
+        {
+          "name": "Snackvideo",
+          "desc": "Downloader snackvideo",
+          "path": "/download/snackvideo?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link snackvideo"
+          }
+        },
+        {
+          "name": "Soundcloud",
+          "desc": "Downloader soundcloud",
+          "path": "/download/soundcloud?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link soundcloud"
+          }
+        },
+        {
+          "name": "Terabox",
+          "desc": "Downloader terabox",
+          "path": "/download/terabox?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link terabox"
+          }
+        },
+        {
+          "name": "XNXX",
+          "desc": "Downloader xnxx",
+          "path": "/download/xnxx?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link xnxx"
+          }
+        },
+        {
+          "name": "Spotify",
+          "desc": "Downloader spotify",
+          "path": "/download/spotify?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link spotify"
+          }
+        },
+        {
+          "name": "Capcut",
+          "desc": "Downloader capcut",
+          "path": "/download/capcut?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link capcut"
+          }
+        },
+        {
+          "name": "Gdrive",
+          "desc": "Downloader google drive",
+          "path": "/download/gdrive?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link google drive"
+          }
+        },
+        {
+          "name": "Videy",
+          "desc": "Downloader videy",
+          "path": "/download/videy?url=",
+          "status": "ready",
+          "params": {
+            "url": "Link videy"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "items": [
+        {
+  "name": "Save Website to Zip",
+  "desc": "Download seluruh isi website menjadi file zip (static HTML)",
+  "path": "/tools/saveweb2zip?url=&renameAssets=&saveStructure=&alternativeAlgorithm=&mobileVersion=",
+  "status": "ready",
+  "params": {
+    "url": "URL website yang ingin disimpan, contoh: https://example.com",
+    "renameAssets": "Opsi untuk rename semua file aset (true/false)",
+    "saveStructure": "Simpan struktur folder seperti aslinya (true/false)",
+    "alternativeAlgorithm": "Gunakan algoritma alternatif untuk scraping (true/false)",
+    "mobileVersion": "Ambil versi mobile dari website (true/false)"
+  }
+},
+        {
+          "name": "Text-to-speech",
+          "desc": "Tts anime character",
+          "path": "/tools/text-to-speech?text=",
+          "status": "ready",
+          "params": {
+            "text": "Teks yang ingin diubah menjadi suara karakter anime"
+          }
+        },
+        {
+          "name": "Send Mail",
+          "desc": "Mengirim email via api",
+          "path": "/tools/sendmail?to=&from=&subject=&message=",
+          "status": "ready",
+          "params": {
+            "to": "Email penerima",
+            "from": "Email pengirim",
+            "subject": "Judul email",
+            "message": "Isi pesan"
+          }
+        },
+        {
+          "name": "OCR",
+          "desc": "Read text from image",
+          "path": "/tools/ocr?url=",
+          "status": "ready",
+          "params": {
+            "url": "URL gambar yang ingin dibaca teksnya"
+          }
+        },
+        {
+          "name": "Screenshot Web",
+          "desc": "Ambil tangkapan layar dari URL website",
+          "path": "/tools/ssweb?apikey=&url=",
+          "status": "ready",
+          "params": {
+            "apikey": "API key untuk mengakses fitur screenshot",
+            "url": "URL website yang ingin diambil screenshot-nya"
+          }
+        },
+        {
+          "name": "Cek Gempa",
+          "desc": "Tampilkan informasi gempa terbaru",
+          "path": "/tools/cekgempa?apikey=",
+          "status": "ready",
+          "params": {
+            "apikey": "API key untuk mengakses data gempa"
+          }
+        },
+        {
+          "name": "Cek Cuaca",
+          "desc": "Check weather information for a city",
+          "path": "/tools/cekcuaca?apikey=&kota=",
+          "status": "Active"
+        },
+        {
+          "name": "Cek Kode Pos",
+          "desc": "Tampilkan kode pos berdasarkan nama kota atau area",
+          "path": "/tools/cekkodepos?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "apikey": "API key untuk mengakses data kode pos",
+            "q": "Nama kota atau area yang ingin dicari kode posnya"
+          }
+        },
+        {
+          "name": "IP Lookup",
+          "desc": "Cari informasi lengkap dari alamat IP seperti domain Host, lokasi, dan ISP",
+          "path": "/tools/iplookup?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "apikey": "API key untuk mengakses data IP",
+            "q": "Alamat IP yang ingin dicari domain-nya"
+          }
+        },
+        {
+          "name": "Emoji To Gif",
+          "desc": "Convert emoji to gif",
+          "path": "/tools/emojitogif?emoji=",
+          "status": "ready",
+          "params": {
+            "emoji": "Emoji yang ingin dikonversi menjadi gif"
+          }
+        },
+        {
+          "name": "Emoji Mix",
+          "desc": "Emoji mix converter",
+          "path": "/tools/emojimix?emoji1=&emoji2=",
+          "status": "ready",
+          "params": {
+            "emoji1": "Emoji pertama",
+            "emoji2": "Emoji kedua"
+          }
+        }
+      ]
+    },
+    {
+  "name": "Image Creator",
+  "items": [
+    {
+  "name": "DeepImg Generator",
+  "desc": "Generate styled images from text prompt using DeepImg (9 style options)",
+  "path": "/imagecreator/deepimg?prompt=&style=&size=",
+  "status": "ready",
+  "params": {
+    "prompt": "Deskripsi teks untuk menghasilkan gambar",
+    "style": "Gaya gambar, contoh: default, ghibli, cyberpunk, anime, portrait, chibi, pixel art, oil painting, 3d",
+    "size": "Ukuran rasio gambar, contoh: 1:1, 3:2, 2:3"
+  }
+},
+    {
+  "name": "To Hijab",
+  "desc": "Make a photo wearing a hijab",
+  "path": "/imagecreator/to-hijab?apikey=&imageUrl=",
+  "status": "ready",
+  "params": {
+    "imageUrl": "Link gambar yang ingin diberi hijab"
+  }
+},
+{
+  "name": "Text To Ghibli",
+  "desc": "Generate Studio Ghibli-style image from text",
+  "path": "/imagecreator/text2ghibli?apikey=&text=",
+  "status": "ready",
+  "params": {
+    "text": "Deskripsi untuk menghasilkan gambar bergaya Ghibli"
+  }
+},
+{
+  "name": "Text To Anime",
+  "desc": "Generate Anime-style image from text",
+  "path": "/imagecreator/text2anime?apikey=&text=&ratio=",
+  "status": "ready",
+  "params": {
+    "text": "Deskripsi untuk menghasilkan gambar anime",
+    "ratio": "Rasio gambar, contoh: 1:1 atau 16:9"
+  }
+},
+    {
+  "name": "Remini",
+  "desc": "Enhance low quality image to high quality",
+  "path": "/imagecreator/remini?apikey=&url=",
+  "status": "ready",
+  "params": {
+    "url": "Link gambar yang ingin ditingkatkan"
+  }
+},
+{
+  "name": "Removebg",
+  "desc": "Remove background from an image",
+  "path": "/imagecreator/removebg?apikey=&url=",
+  "status": "ready",
+  "params": {
+    "url": "Link gambar yang ingin dihapus background-nya"
+  }
+},
+{
+  "name": "Upscale",
+  "desc": "Upscale image to higher resolution",
+  "path": "/imagecreator/upscale?apikey=&url=",
+  "status": "ready",
+  "params": {
+    "url": "Link gambar yang ingin di-upscale"
+  }
+},
+{
+  "name": "Colorize",
+  "desc": "Colorize black and white image",
+  "path": "/imagecreator/colorize?apikey=&url=",
+  "status": "ready",
+  "params": {
+    "url": "Link gambar hitam putih yang ingin diwarnai"
+  }
+},
+    {
+       "name": "Nulis Buku",
+       "desc": "To write text in a book",
+       "path": "/imagecreator/nulis?apikey=&text=&name=&class=",
+       "status": "ready",
+       "params": {
+       "q": "Teks Untuk Ditulis"
+      }
+    },
+    {
+      "name": "Brat",
+      "desc": "Generate gambar teks gaya 'brat'",
+      "path": "/imagecreator/brat?apikey=&text=",
+      "status": "ready",
+      "params": {
+        "text": "Teks untuk gambar brat style"
+      }
+    }
+  ]
+},
+    {
+      "name": "Search Tools",
+      "items": [
+        {
+          "name": "Npm Search",
+          "desc": "Mencari module npm",
+          "path": "/search/npm?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Tiktok Search",
+          "desc": "Mencari video tiktok",
+          "path": "/search/tiktok?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Xnxx Search",
+          "desc": "Xnxx Video search 18+",
+          "path": "/search/xnxx?q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Bstation Search",
+          "desc": "Bstation video search",
+          "path": "/search/bstation-search?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Pinterest Search",
+          "desc": "Search foto",
+          "path": "/search/pinterest?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Bingimage",
+          "desc": "Search bingimage foto",
+          "path": "/search/bingimage?apikey=&q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        },
+        {
+          "name": "Play Spotify",
+          "desc": "Play spotify music",
+          "path": "/download/playspotify?q=",
+          "status": "ready",
+          "params": {
+            "q": "Nama lagu"
+          }
+        },
+        {
+          "name": "YouTube",
+          "desc": "Video search",
+          "path": "/search/youtube?q=",
+          "status": "ready",
+          "params": {
+            "q": "Search query"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stalker",
+      "items": [
+        {
+  "name": "Instagram Stalk",
+  "desc": "Stalk instagram account",
+  "path": "/stalk/instagram?apikey=&username=",
+  "status": "ready",
+  "params": {
+    "q": "Masukan Username Instagram"
+  }
+},
+        {
+          "name": "Github Stalk",
+          "desc": "Stalk github account",
+          "path": "/stalk/github?apikey=&username=",
+          "status": "ready",
+          "params": {
+            "q": "Masukan Username Github"
+          }
+        },
+        {
+          "name": "FF Stalk",
+          "desc": "Stalk akun Free Fire",
+          "path": "/stalk/ff?apikey=&id=",
+          "status": "ready",
+          "params": {
+            "id": "ID akun Free Fire"
+          }
+        }
+      ]
+    },
+    {
+      "name": "API",
+      "items": [
+        {
+          "name": "Status API",
+          "desc": "Cek status layanan API",
+          "path": "/api/status",
+          "status": "ready"
+        }
+      ]
+    }
+  ]
+ }
