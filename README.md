@@ -2,7 +2,7 @@
 
 Antarmuka modern untuk menjelajahi dan menguji endpoint LynnSatoru API.
 
-![Tampilan UI LynnSatoru](src/icon.png)
+![Tampilan UI LynnSatoru](image.png)
 
 📣 Ikuti channel resmi kami di WhatsApp  
 👉 https://whatsapp.com/channel/0029VauopJb3AzNYgQXmQj2E
