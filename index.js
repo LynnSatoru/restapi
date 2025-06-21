@@ -3,9 +3,10 @@ const chalk = require('chalk');
 const fs = require('fs');
 const cors = require('cors');
 const path = require('path');
+require("./function.js")
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 app.enable("trust proxy");
 app.set("json spaces", 2);
@@ -18,14 +19,17 @@ app.use('/src', express.static(path.join(__dirname, 'src')));
 
 const settingsPath = path.join(__dirname, './src/settings.json');
 const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+global.apikey = settings.apiSettings.apikey
 
 app.use((req, res, next) => {
+console.log(chalk.bgHex('#FFFF99').hex('#333').bold(` Request Route: ${req.path} `));
+global.totalreq += 1
     const originalJson = res.json;
     res.json = function (data) {
         if (data && typeof data === 'object') {
             const responseData = {
                 status: data.status,
-                creator: settings.apiSettings.creator || "Created Using LynnSatoru",
+                creator: settings.apiSettings.creator || "Created Using Mamix",
                 ...data
             };
             return originalJson.call(this, responseData);
