@@ -1,0 +1,3221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Dokumentasi API modern LynnSatoru dengan antarmuka pengujian interaktif. Jelajahi berbagai endpoint API dengan mudah.">
+    <meta name="keywords" content="API, Dokumentasi API, REST API, LynnSatoru, Alat Pengembang">
+    <meta name="author" content="LynnSatoru">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lynnsatoru.example.com">
+    <meta property="og:title" content="LynnSatoru - Dokumentasi API">
+    <meta property="og:description" content="Antarmuka dokumentasi API dengan fitur lengkap.">
+    <meta property="og:image" content="/src/banner.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lynnsatoru.example.com">
+    <meta property="twitter:title" content="LynnSatoru - Dokumentasi API">
+    <meta property="twitter:description" content="Antarmuka dokumentasi API dengan fitur lengkap.">
+    <meta property="twitter:image" content="/src/banner.jpg">
+    <link rel="icon" href="/src/icon.png" type="image/png">
+    <title id="page">LynnSatoru API</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            /* Warna Premium - Gradien Ungu-Emerald */
+            --primary-color: #7c4dff;
+            --primary-hover: #651fff;
+            --secondary-color: #b388ff;
+            --accent-color: #00e5ff;
+            --success-color: #00c853;
+            --error-color: #ff5252;
+            --warning-color: #ffab00;
+            --info-color: #536dfe;
+            
+            /* Light Mode */
+            --background-color: #f8f9fe;
+            --card-background: #ffffff;
+            --text-color: #263238;
+            --text-muted: #607d8b;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --highlight-color: rgba(124, 77, 255, 0.1);
+            
+            /* UI Elements */
+            --border-radius-sm: 10px;
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+            --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            
+            /* Animasi */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --hover-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --hover-transform: translateY(-5px) scale(1.02);
+            
+            /* Spacing */
+            --space-xs: 6px;
+            --space-sm: 12px;
+            --space-md: 20px;
+            --space-lg: 28px;
+            --space-xl: 36px;
+            --space-xxl: 56px;
+            
+            /* Layout */
+            --side-nav-width: 280px;
+            --side-nav-collapsed-width: 88px;
+            --header-height: 80px;
+            
+            /* Background values for rgba */
+            --background-color-rgb: 248, 249, 254;
+        }
+
+        .dark-mode {
+            --primary-color: #b388ff;
+            --primary-hover: #9575cd;
+            --secondary-color: #7c4dff;
+            --accent-color: #00e5ff;
+            --background-color: #1a1a2e;
+            --card-background: #252545;
+            --text-color: #e0e0e0;
+            --text-muted: #b0bec5;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --highlight-color: rgba(179, 136, 255, 0.2);
+            --shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+            --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            --background-color-rgb: 26, 26, 46;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scroll-padding-top: calc(var(--header-height) + 20px);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.7;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75em;
+            color: var(--text-color);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Buttons */
+        .btn {
+            font-weight: 600;
+            border-radius: var(--border-radius-sm);
+            transition: var(--hover-transition);
+            padding: 0.75rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            line-height: 1.2;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:focus, .btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 4px var(--highlight-color);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 6px 12px rgba(124, 77, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            transform: var(--hover-transform);
+            box-shadow: 0 8px 20px rgba(124, 77, 255, 0.35);
+            color: white;
+        }
+
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover:before {
+            transform: translateX(0);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-primary:disabled {
+            background: linear-gradient(135deg, #b0b5f3, #c4d9f3);
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Badge */
+        .badge-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            border-radius: 100px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInLeft { from { transform: translateX(-20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+        @keyframes dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; } }
+        @keyframes rotate-spinner { 100% { transform: rotate(360deg); } }
+
+        /* Layout Structure */
+        .main-wrapper {
+            min-height: 100vh;
+            margin-left: var(--side-nav-width);
+            transition: margin-left var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-wrapper.nav-collapsed {
+            margin-left: var(--side-nav-collapsed-width);
+        }
+
+        /* Side Navigation */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: var(--side-nav-width);
+            background-color: var(--card-background);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: width var(--transition), transform var(--transition);
+            display: flex;
+            flex-direction: column;
+            padding: var(--space-lg) 0;
+            overflow-x: hidden;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .side-nav.collapsed {
+            width: var(--side-nav-collapsed-width);
+        }
+
+        .side-nav-logo {
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-lg);
+            margin-bottom: var(--space-xl);
+            gap: var(--space-sm);
+        }
+
+        .side-nav-logo img {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .side-nav-logo #sideNavName {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            transition: opacity var(--transition), transform var(--transition);
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .side-nav.collapsed .side-nav-logo {
+            justify-content: center;
+            padding: 0;
+        }
+
+        .side-nav.collapsed .side-nav-logo #sideNavName,
+        .side-nav.collapsed #versionHeader {
+            opacity: 0;
+            transform: translateX(-10px);
+            pointer-events: none;
+            display: none;
+        }
+
+        .side-nav-links {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) transparent;
+            padding: 0 var(--space-lg);
+        }
+
+        .side-nav-links::-webkit-scrollbar { width: 6px; }
+        .side-nav-links::-webkit-scrollbar-thumb { 
+            background-color: var(--primary-color); 
+            border-radius: 10px;
+            border: 2px solid var(--card-background);
+        }
+
+        .side-nav-link {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
+            color: var(--text-muted);
+            transition: var(--transition);
+            margin: var(--space-xs) 0;
+            border-left: 4px solid transparent;
+            gap: var(--space-md);
+            white-space: nowrap;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .side-nav-link i {
+            font-size: 1.4rem;
+            min-width: 30px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .side-nav-link:hover i,
+        .side-nav-link.active i {
+            transform: scale(1.15);
+        }
+
+        .side-nav-link span {
+            transition: opacity var(--transition), transform var(--transition);
+            font-weight: 500;
+        }
+
+        .side-nav-link:hover, .side-nav-link.active {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+            border-left-color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .side-nav.collapsed .side-nav-link {
+            justify-content: center;
+            padding: var(--space-md) 0;
+        }
+
+        .side-nav.collapsed .side-nav-link span {
+            opacity: 0;
+            transform: translateX(-10px);
+            pointer-events: none;
+            display: none;
+        }
+
+        .nav-collapse-btn {
+            position: absolute;
+            top: calc(var(--header-height) + 20px);
+            right: -16px;
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            z-index: 10;
+            border: 2px solid var(--card-background);
+        }
+
+        .nav-collapse-btn:hover {
+            transform: scale(1.1) rotate(180deg);
+            background-color: var(--primary-hover);
+        }
+
+        .side-nav.collapsed .nav-collapse-btn i {
+            transform: rotate(180deg);
+        }
+
+        /* Header */
+        .main-header {
+            position: sticky;
+            top: 0;
+            height: var(--header-height);
+            background-color: var(--card-background);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            padding: 0 var(--space-lg);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: none;
+            margin-right: var(--space-md);
+            padding: var(--space-sm);
+            border-radius: 50%;
+            transition: background-color var(--transition);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle:hover {
+            background-color: var(--highlight-color);
+            color: var(--primary-color);
+        }
+
+        .search-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 var(--space-lg);
+            position: relative;
+        }
+
+        .input-group {
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background-color: var(--background-color);
+            transition: var(--hover-transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .input-group:focus-within {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .input-group-text {
+            background-color: transparent;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            padding: 0 var(--space-md);
+        }
+
+        #searchInput {
+            border: none;
+            padding: var(--space-md) 0;
+            font-size: 1rem;
+            background-color: transparent;
+            color: var(--text-color);
+            flex-grow: 1;
+            min-width: 0;
+            font-weight: 500;
+        }
+
+        #searchInput:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        #searchInput::placeholder {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: var(--space-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 2;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .clear-search.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .clear-search:hover {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+        }
+
+        .header-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .notification-bell {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 50%;
+            background: none;
+            border: none;
+        }
+
+        .notification-bell:hover {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--error-color);
+            border-radius: 50%;
+            border: 2px solid var(--card-background);
+            display: none;
+        }
+
+        .notification-badge.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            padding: var(--space-xxl) var(--space-xl);
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - var(--header-height));
+            background: linear-gradient(135deg, rgba(var(--background-color-rgb),0.85), rgba(var(--background-color-rgb),1) 70%);
+        }
+
+        .dark-mode .hero-section {
+            background: linear-gradient(135deg, rgba(var(--background-color-rgb),0.9), rgba(var(--background-color-rgb),1) 70%);
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+            animation: slideInLeft 0.8s ease-out;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-heading {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        #name {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 900;
+            margin-bottom: 0;
+            line-height: 1.1;
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--text-muted);
+            margin-bottom: var(--space-xl);
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .hero-actions a {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: var(--shadow);
+            transition: var(--hover-transition);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-actions a:hover {
+            transform: var(--hover-transform);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .hero-actions a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .hero-actions a:hover::before {
+            transform: translateX(0);
+        }
+
+        /* Visual banner di sisi kanan */
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            min-height: 300px;
+            max-height: 500px;
+            animation: slideInRight 0.8s ease-out;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: var(--space-lg);
+        }
+
+        .banner-container {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 16/9;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform: rotate(3deg);
+            position: relative;
+            z-index: 3;
+            border: 1px solid var(--border-color);
+        }
+
+        .banner-container:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .banner {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .banner-container:hover .banner {
+            transform: scale(1.05);
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.1;
+            animation: float 10s infinite alternate;
+            display: block;
+            filter: blur(20px);
+        }
+
+        .shape-1 {
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            right: 80px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            bottom: 0;
+            right: 20%;
+            animation-delay: 2s;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            bottom: 30%;
+            right: 10%;
+            animation-delay: 4s;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+
+        /* API Section */
+        .api-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background-color: var(--background-color);
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: inline-block;
+            color: var(--text-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 4px;
+        }
+
+        .section-description {
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
+            color: var(--text-muted);
+            margin-bottom: var(--space-xl);
+            max-width: 800px;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: var(--space-xxl);
+            animation: slideInUp 0.6s ease-in-out both;
+        }
+
+        .category-header {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: var(--space-lg);
+            color: var(--text-color);
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-left: var(--space-sm);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow);
+            transition: var(--hover-transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .category-image:hover {
+            transform: scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 calc(var(--space-md) * -0.5);
+        }
+
+        /* API Cards */
+        .api-item {
+            margin-bottom: var(--space-lg);
+            padding: 0 calc(var(--space-md) * 0.5);
+            transition: var(--hover-transition);
+            opacity: 0;
+            transform: translateY(20px);
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .api-item {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .api-item {
+                width: 33.3333%;
+            }
+        }
+
+        .api-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .api-card {
+            padding: var(--space-lg);
+            background-color: var(--card-background);
+            color: var(--text-color);
+            border-radius: var(--border-radius);
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--card-shadow);
+            transition: var(--hover-transition);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            position: relative;
+            height: 100%;
+        }
+
+        .api-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 60px 60px 0;
+            border-color: transparent var(--highlight-color) transparent transparent;
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .api-card:hover {
+            box-shadow: var(--hover-shadow);
+            transform: var(--hover-transform);
+        }
+
+        .api-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Styling for unavailable API cards (status error or update) */
+        .api-card.api-card-unavailable {
+            position: relative;
+        }
+
+        .api-card.api-card-unavailable::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: inherit;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .api-card.api-card-unavailable > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .api-card-info {
+            margin-bottom: var(--space-md);
+        }
+
+        .api-card h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .api-card .text-muted {
+            color: var(--text-muted) !important;
+            font-size: 0.95rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .api-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .get-api-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 0.6rem 1.2rem;
+            transition: var(--hover-transition);
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            z-index: 1;
+        }
+
+        .get-api-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .get-api-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .get-api-btn:hover::before {
+            transform: translateX(0);
+        }
+
+        /* Styles for disabled GET button due to API status */
+        .get-api-btn[disabled] {
+            background: var(--text-muted) !important;
+            color: var(--background-color) !important;
+            opacity: 0.65 !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .get-api-btn[disabled]::before {
+            display: none !important;
+        }
+
+        .api-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .status-ready {
+            background-color: rgba(0, 200, 83, 0.15);
+            color: var(--success-color);
+        }
+
+        .status-error {
+            background-color: rgba(255, 82, 82, 0.15);
+            color: var(--error-color);
+        }
+
+        .status-update {
+            background-color: rgba(255, 171, 0, 0.15);
+            color: var(--warning-color);
+        }
+
+        .api-status i {
+            font-size: 0.7rem;
+        }
+
+        .status-ready i {
+            font-size: 0.65rem;
+        }
+
+        .api-status span {
+            margin-left: 3px;
+        }
+
+        /* No Results Message */
+        .no-results-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xxl) var(--space-lg);
+            text-align: center;
+            animation: fadeIn 0.4s ease-in-out;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-top: var(--space-xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .no-results-message i {
+            font-size: 3.5rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-lg);
+            opacity: 0.5;
+        }
+
+        .no-results-message p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-lg);
+        }
+
+        .no-results-message span {
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .no-results-message .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .no-results-message .btn:hover {
+            transform: var(--hover-transform);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Footer */
+        .main-footer {
+            margin-top: auto;
+            padding: var(--space-lg) var(--space-xl);
+            background-color: var(--card-background);
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+        }
+
+        .copyright {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .footer-middle {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 54px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        /* Modal */
+        .modal-content {
+            background-color: var(--card-background);
+            color: var(--text-color);
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: var(--space-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-title {
+            font-weight: 800;
+            color: var(--text-color);
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+
+        .modal-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: var(--space-xs);
+        }
+
+        .btn-close {
+            color: var(--text-color);
+            opacity: 0.7;
+            transition: var(--transition);
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        .btn-close:hover {
+            opacity: 1;
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: var(--space-lg) 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--card-background);
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: var(--card-background);
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+        }
+
+        .endpoint-container, .response-container {
+            margin-bottom: var(--space-lg);
+            animation: slideInUp 0.4s ease-in-out;
+        }
+
+        .endpoint-label, .response-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .copy-btn:hover {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+        }
+
+        .copy-success {
+            color: var(--success-color) !important;
+        }
+
+        .code-block {
+            background-color: var(--background-color);
+            padding: var(--space-md);
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+            margin-bottom: var(--space-md);
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Query Input Container */
+        .query-input-container {
+            margin-bottom: var(--space-lg);
+        }
+
+        .param-container {
+            margin-bottom: var(--space-lg);
+            animation: slideInUp 0.4s ease-in-out;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .param-form-title {
+            margin-bottom: var(--space-lg);
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 1.2rem;
+        }
+
+        .param-form-title i {
+            color: var(--primary-color);
+        }
+
+        .param-group {
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .param-label-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-label {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .required-indicator {
+            color: var(--error-color);
+            font-weight: bold;
+        }
+
+        .param-info {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            cursor: help;
+            transition: var(--transition);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .param-info:hover {
+            color: var(--primary-color);
+            background-color: var(--highlight-color);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .custom-input {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.85rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px var(--highlight-color);
+        }
+
+        .custom-input.is-invalid {
+            border-color: var(--error-color);
+            box-shadow: 0 0 0 4px rgba(255, 82, 82, 0.1);
+        }
+
+        .shake-animation {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        .inner-desc {
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.95rem;
+            margin-top: var(--space-lg);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .inner-desc i {
+            color: var(--primary-color);
+            margin-top: 2px;
+        }
+
+        /* Loading Spinner - New Style */
+        #apiResponseLoading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            gap: var(--space-md);
+        }
+
+        #apiResponseLoading p {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .spinner-logo {
+            animation: rotate-spinner 2s linear infinite;
+        }
+
+        .spinner-path {
+            stroke: var(--background-color);
+            stroke-linecap: round;
+        }
+
+        .spinner-animation {
+            stroke: var(--primary-color);
+            stroke-linecap: round;
+            animation: dash 1.5s ease-in-out infinite;
+        }
+
+        /* Loading Screen */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--background-color);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .spinner-wrapper {
+            text-align: center;
+        }
+
+        .spinner-wrapper p {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-top: var(--space-lg);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            width: 24px;
+            text-align: left;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 1060;
+        }
+
+        .toast {
+            background-color: var(--card-background);
+            color: var(--text-color);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border-left: 5px solid var(--primary-color);
+            min-width: 350px;
+            border: 1px solid var(--border-color);
+        }
+
+        .toast-header {
+            background-color: var(--card-background);
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--space-sm) var(--space-md);
+            font-weight: 600;
+        }
+
+        .toast-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .toast-title {
+            font-weight: 700;
+        }
+
+        .toast-body {
+            padding: var(--space-md);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* JSON Syntax Highlighting */
+        .json-string { color: var(--success-color); }
+        .json-number { color: var(--accent-color); }
+        .json-boolean { color: var(--primary-color); }
+        .json-null { color: var(--error-color); }
+        .json-key { color: var(--warning-color); }
+
+        .dark-mode .json-string { color: #7ee787; }
+        .dark-mode .json-number { color: #79c0ff; }
+        .dark-mode .json-boolean { color: #ff7b72; }
+        .dark-mode .json-null { color: #ff7b72; }
+        .dark-mode .json-key { color: #ffa657; }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: var(--space-xl) var(--space-lg);
+            }
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: var(--space-xl);
+                text-align: center;
+            }
+            .hero-heading {
+                justify-content: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-visual {
+                width: 100%;
+                max-width: 500px;
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-wrapper {
+                margin-left: 0;
+            }
+            .side-nav {
+                transform: translateX(-100%);
+                box-shadow: 0 0 30px rgba(0,0,0,0.25);
+            }
+            .side-nav.active {
+                transform: translateX(0);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .search-container {
+                max-width: 400px;
+                margin: 0 auto 0 var(--space-md);
+            }
+            .api-section, .hero-section {
+                padding: var(--space-xl) var(--space-md);
+            }
+            .modal-dialog {
+                margin: var(--space-sm);
+                max-width: calc(100% - (var(--space-sm) * 2));
+            }
+            .api-item {
+                width: 50%;
+            }
+            .nav-collapse-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-actions a {
+                width: 100%;
+                text-align: center;
+            }
+            .search-container {
+                max-width: none;
+                margin: 0 var(--space-sm);
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-md);
+            }
+            .category-header {
+                font-size: 1.9rem;
+            }
+            .api-item {
+                width: 100%;
+            }
+            .main-header {
+                padding: 0 var(--space-md);
+            }
+            .main-footer {
+                padding: var(--space-md) var(--space-lg);
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .theme-switcher {
+                margin: var(--space-md) 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .api-section, .hero-section {
+                padding: var(--space-lg) var(--space-sm);
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .section-description {
+                font-size: 1rem;
+            }
+            .get-api-btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .api-actions {
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: var(--space-sm);
+            }
+            .toast-container {
+                left: var(--space-md);
+                right: var(--space-md);
+                bottom: var(--space-md);
+            }
+            .toast {
+                min-width: unset;
+                width: calc(100% - (var(--space-md) * 2));
+            }
+            .modal-body {
+                max-height: 65vh;
+            }
+            .modal-content {
+                padding: var(--space-md);
+            }
+        }
+
+        /* Additional Styles for Error Container in Modal */
+        .error-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background-color: rgba(var(--error-color), 0.1);
+            border: 1px solid rgba(var(--error-color), 0.3);
+            border-radius: var(--border-radius);
+            color: var(--error-color);
+        }
+
+        .error-icon {
+            font-size: 2rem;
+        }
+
+        .error-message h6 {
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+            color: var(--error-color);
+        }
+
+        .error-message p {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+            color: var(--error-color);
+            opacity: 0.9;
+        }
+
+        .retry-btn {
+            background-color: var(--error-color);
+            color: white;
+            border: none;
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.9rem;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+        }
+
+        .retry-btn:hover {
+            background-color: var(--error-color);
+            opacity: 0.9;
+        }
+
+        /* Code folding styles */
+        .code-fold-trigger {
+            cursor: pointer;
+            padding: 8px;
+            background-color: rgba(var(--primary-color), 0.05);
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .code-fold-trigger:hover {
+            background-color: rgba(var(--primary-color), 0.1);
+        }
+
+        .code-fold-content {
+            padding-left: 24px;
+            border-left: 2px solid var(--highlight-color);
+            overflow: hidden;
+            max-height: 1000px;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .code-fold-trigger.folded + .code-fold-content {
+            max-height: 0;
+        }
+
+        .fold-indicator {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-left: 10px;
+        }
+
+        .fold-indicator i {
+            transition: transform 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .code-fold-trigger.folded .fold-indicator i {
+            transform: rotate(-90deg);
+        }
+
+        /* Search input focus animation */
+        .input-group.search-focused {
+            box-shadow: 0 0 0 4px var(--highlight-color), var(--hover-shadow) !important;
+        }
+
+        /* Button active state */
+        .btn-active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+        }
+
+        /* Pulse animation for button click */
+        .pulse-animation {
+            animation: pulse 0.3s ease-out;
+        }
+
+        /* Slide in bottom animation for response */
+        .slide-in-bottom {
+            animation: slideInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .fab:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .fab i {
+            font-size: 1.5rem;
+        }
+
+        /* Tooltip custom style */
+        .tooltip {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .tooltip-inner {
+            background-color: var(--primary-color);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before,
+        .bs-tooltip-top .tooltip-arrow::before {
+            border-top-color: var(--primary-color);
+        }
+
+        .bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before,
+        .bs-tooltip-right .tooltip-arrow::before {
+            border-right-color: var(--primary-color);
+        }
+
+        .bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before,
+        .bs-tooltip-bottom .tooltip-arrow::before {
+            border-bottom-color: var(--primary-color);
+        }
+
+        .bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before,
+        .bs-tooltip-left .tooltip-arrow::before {
+            border-left-color: var(--primary-color);
+        }
+
+        /* Custom scrollbar for the whole page */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+            border: 2px solid var(--background-color);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-hover);
+        }
+    </style>
+</head>
+<body>
+    <div id="loadingScreen" role="status" aria-live="polite">
+        <div class="spinner-wrapper">
+            <svg class="spinner-logo" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="spinner-path" cx="50" cy="50" r="45" fill="none" stroke-width="8" />
+                <circle class="spinner-animation" cx="50" cy="50" r="45" fill="none" stroke-width="8" />
+            </svg>
+            <p>Memuat<span class="loading-dots">...</span></p>
+        </div>
+    </div>
+
+    <aside class="side-nav" id="sideNavigation" aria-label="Navigasi Utama">
+        <div class="side-nav-logo">
+            <img src="/src/icon.png" alt="Logo LynnSatoru" style="border-radius: 12px;">
+            <span id="sideNavName">LynnSatoru</span>
+            <div id="versionHeader" class="badge-pill">developers</div>
+        </div>
+        
+        <nav class="side-nav-links" aria-label="Tautan navigasi">
+            <a href="#home" class="side-nav-link active" aria-current="page">
+                <i class="fas fa-home" aria-hidden="true"></i>
+                <span>Beranda</span>
+            </a>
+            <a href="#apis" class="side-nav-link">
+                <i class="fas fa-plug" aria-hidden="true"></i>
+                <span>API</span>
+            </a>
+            <a href="#documentation" class="side-nav-link">
+                <i class="fas fa-book" aria-hidden="true"></i>
+                <span>Dokumentasi</span>
+            </a>
+            <a href="https://github.com/LynnSatoru" target="_blank" rel="noopener noreferrer" class="side-nav-link">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="#support" class="side-nav-link">
+                <i class="fas fa-headset" aria-hidden="true"></i>
+                <span>Dukungan</span>
+            </a>
+        </nav>
+        
+        <button class="nav-collapse-btn" aria-label="Alihkan navigasi" aria-expanded="false" aria-controls="sideNavigation">
+            <i class="fas fa-angle-left" aria-hidden="true"></i>
+        </button>
+    </aside>
+
+    <div class="main-wrapper">
+        <header class="main-header" role="banner">
+            <button class="menu-toggle" aria-label="Alihkan menu navigasi" aria-expanded="false" aria-controls="sideNavigation">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            
+            <div class="search-container" role="search">
+                <div class="input-group">
+                    <span class="input-group-text" aria-hidden="true"><i class="fas fa-search"></i></span>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari API..." aria-label="Cari API">
+                    <button class="clear-search" id="clearSearch" aria-label="Hapus pencarian">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button class="notification-bell" id="notificationBell" aria-label="Notifikasi">
+                    <i class="far fa-bell" aria-hidden="true"></i>
+                    <span class="notification-badge" id="notificationBadge" aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-primary" id="quickAccessBtn">
+                    <i class="fas fa-bolt" aria-hidden="true"></i>
+                    <span class="d-none d-md-inline">Akses Cepat</span>
+                </button>
+            </div>
+        </header>
+        
+        <main id="mainContent">
+            <section id="home" class="hero-section" aria-labelledby="heroHeading">
+                <div class="hero-content">
+                    <div class="hero-heading">
+                        <h1 id="name" class="gradient-text">LynnSatoru</h1>
+                        <div id="version" class="badge-pill">developers</div>
+                    </div>
+                    
+                    <p id="description" class="hero-description">Antarmuka dokumentasi API dengan fitur lengkap.</p>
+                    <div id="apiLinks" class="hero-actions">
+                        <a href="https://github.com/LynnSatoru/LynnSatoru-API" target="_blank" rel="noopener noreferrer" class="api-link" style="animation-delay: 0s;" aria-label="Lihat di GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i> Lihat di GitHub
+                        </a>
+                        <a href="#apis" class="api-link" style="animation-delay: 0.1s;" aria-label="Jelajahi API">
+                            <i class="fas fa-rocket" aria-hidden="true"></i> Jelajahi API
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="banner-container">
+                        <img id="dynamicImage" class="banner" src="/src/banner.jpg" alt="Banner LynnSatoru">
+                    </div>
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </section>
+            
+            <section id="apis" class="api-section" aria-labelledby="apiSectionTitle">
+                <h2 id="apiSectionTitle" class="section-title">API yang Tersedia</h2>
+                <p class="section-description">Jelajahi koleksi API kami yang powerful dan mudah digunakan.</p>
+                
+                <div class="tab-content" id="apiContent">
+                    <!-- API content will be loaded dynamically -->
+                </div>
+            </section>
+
+            <section id="documentation" class="api-section" aria-labelledby="docSectionTitle">
+                <h2 id="docSectionTitle" class="section-title">Dokumentasi</h2>
+                <p class="section-description">Pelajari cara menggunakan API LynnSatoru dengan panduan lengkap kami.</p>
+                
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="api-card h-100">
+                            <div class="api-card-info">
+                                <h5><i class="fas fa-file-alt me-2 text-primary"></i> Panduan Mulai Cepat</h5>
+                                <p class="text-muted">Pelajari cara cepat mengintegrasikan API LynnSatoru ke dalam aplikasi Anda.</p>
+                            </div>
+                            <div class="api-actions">
+                                <a href="#" class="btn btn-primary">Baca Panduan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="api-card h-100">
+                            <div class="api-card-info">
+                                <h5><i class="fas fa-code me-2 text-primary"></i> Contoh Kode</h5>
+                                <p class="text-muted">Kumpulan contoh kode dalam berbagai bahasa pemrograman.</p>
+                            </div>
+                            <div class="api-actions">
+                                <a href="#" class="btn btn-primary">Lihat Contoh</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="api-card h-100">
+                            <div class="api-card-info">
+                                <h5><i class="fas fa-video me-2 text-primary"></i> Video Tutorial</h5>
+                                <p class="text-muted">Tutorial video langkah demi langkah untuk pemula.</p>
+                            </div>
+                            <div class="api-actions">
+                                <a href="#" class="btn btn-primary">Tonton Sekarang</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="support" class="api-section" aria-labelledby="supportSectionTitle">
+                <h2 id="supportSectionTitle" class="section-title">Dukungan</h2>
+                <p class="section-description">Kami siap membantu Anda dalam menggunakan API LynnSatoru.</p>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="api-card h-100">
+                            <div class="api-card-info">
+                                <h5><i class="fas fa-comments me-2 text-primary"></i> Forum Komunitas</h5>
+                                <p class="text-muted">Bergabunglah dengan komunitas pengguna LynnSatoru dan dapatkan bantuan dari sesama developer.</p>
+                            </div>
+                            <div class="api-actions">
+                                <a href="#" class="btn btn-primary">Bergabung</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="api-card h-100">
+                            <div class="api-card-info">
+                                <h5><i class="fas fa-ticket-alt me-2 text-primary"></i> Tiket Dukungan</h5>
+                                <p class="text-muted">Ajukan tiket dukungan untuk masalah teknis yang Anda hadapi.</p>
+                            </div>
+                            <div class="api-actions">
+                                <a href="#" class="btn btn-primary">Ajukan Tiket</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="main-footer" role="contentinfo">
+            <div class="footer-content">
+                <div id="wm" class="copyright">&copy; 2024 LynnSatoru. Semua hak dilindungi.</div>
+                
+                <div class="footer-middle">
+                    <div class="theme-switcher">
+                        <span>Terang</span>
+                        <label class="switch" aria-label="Alihkan tema gelap/terang">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="slider round" aria-hidden="true"></span>
+                        </label>
+                        <span>Gelap</span>
+                    </div>
+                </div>
+                
+                <nav class="footer-links" aria-label="Tautan tambahan">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <i class="fas fa-file-contract" aria-hidden="true"></i> Kebijakan
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Kontak
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <i class="fas fa-question-circle" aria-hidden="true"></i> FAQ
+                    </a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="backToTop" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- API Response Modal -->
+    <div class="modal fade" id="apiResponseModal" tabindex="-1" aria-labelledby="apiResponseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" id="modalDialog" role="document">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <div>
+                        <h3 class="modal-title" id="apiResponseModalLabel">Nama API</h3>
+                        <p class="modal-desc mb-0" id="apiResponseModalDesc">Deskripsi API.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </header>
+                <div class="modal-body">
+                    <section class="endpoint-container" aria-labelledby="endpointLabel">
+                        <div class="endpoint-label">
+                            <span id="endpointLabel">Endpoint</span>
+                            <button class="copy-btn" id="copyEndpoint" title="Salin ke clipboard" aria-label="Salin endpoint">
+                                <i class="far fa-copy" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <pre id="apiEndpoint" class="code-block" tabindex="0"></pre>
+                    </section>
+                    
+                    <div id="apiQueryInputContainer" class="query-input-container">
+                        <!-- Parameter inputs will be loaded here -->
+                    </div>
+                    
+                    <div id="apiResponseLoading" class="d-none" role="status" aria-live="polite">
+                        <svg class="spinner-logo" width="60" height="60" viewBox="0 0 100 100" aria-hidden="true">
+                            <circle class="spinner-path" cx="50" cy="50" r="45" fill="none" stroke-width="8" />
+                            <circle class="spinner-animation" cx="50" cy="50" r="45" fill="none" stroke-width="8" />
+                        </svg>
+                        <p>Memproses permintaan...</p>
+                    </div>
+                    
+                    <section class="response-container d-none" id="responseContainer" aria-labelledby="responseLabel">
+                        <div class="response-label">
+                            <span id="responseLabel">Respons</span>
+                            <button class="copy-btn" id="copyResponse" title="Salin ke clipboard" aria-label="Salin respons">
+                                <i class="far fa-copy" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <pre id="apiResponseContent" class="code-block d-none" tabindex="0"></pre>
+                    </section>
+                </div>
+                <footer class="modal-footer">
+                    <button id="submitQueryBtn" class="btn btn-primary" disabled>
+                        <span>Kirim</span>
+                        <i class="fas fa-paper-plane ms-2" aria-hidden="true"></i>
+                    </button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <header class="toast-header">
+                <i class="toast-icon fas fa-info-circle me-2" aria-hidden="true"></i>
+                <strong class="me-auto toast-title">Notifikasi</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Tutup"></button>
+            </header>
+            <div class="toast-body">
+                Ini adalah pesan notifikasi.
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Access Modal -->
+    <div class="modal fade" id="quickAccessModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-bolt me-2 text-warning"></i> Akses Cepat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <a href="#home" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
+                            <i class="fas fa-home me-2 text-primary"></i> Beranda
+                        </a>
+                        <a href="#apis" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
+                            <i class="fas fa-plug me-2 text-primary"></i> API
+                        </a>
+                        <a href="#documentation" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
+                            <i class="fas fa-book me-2 text-primary"></i> Dokumentasi
+                        </a>
+                        <a href="#support" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
+                            <i class="fas fa-headset me-2 text-primary"></i> Dukungan
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Pastikan DOM sudah dimuat sepenuhnya sebelum menjalankan skrip
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Selektor Elemen DOM Utama
+            const DOM = {
+                loadingScreen: document.getElementById("loadingScreen"),
+                body: document.body,
+                sideNav: document.querySelector('.side-nav'),
+                mainWrapper: document.querySelector('.main-wrapper'),
+                navCollapseBtn: document.querySelector('.nav-collapse-btn'),
+                menuToggle: document.querySelector('.menu-toggle'),
+                themeToggle: document.getElementById('themeToggle'),
+                searchInput: document.getElementById('searchInput'),
+                clearSearchBtn: document.getElementById('clearSearch'),
+                apiContent: document.getElementById('apiContent'),
+                notificationToast: document.getElementById('notificationToast'),
+                notificationBell: document.getElementById('notificationBell'),
+                notificationBadge: document.getElementById('notificationBadge'),
+                backToTop: document.getElementById('backToTop'),
+                quickAccessBtn: document.getElementById('quickAccessBtn'),
+                modal: {
+                    instance: null,
+                    element: document.getElementById('apiResponseModal'),
+                    label: document.getElementById('apiResponseModalLabel'),
+                    desc: document.getElementById('apiResponseModalDesc'),
+                    content: document.getElementById('apiResponseContent'),
+                    container: document.getElementById('responseContainer'),
+                    endpoint: document.getElementById('apiEndpoint'),
+                    spinner: document.getElementById('apiResponseLoading'),
+                    queryInputContainer: document.getElementById('apiQueryInputContainer'),
+                    submitBtn: document.getElementById('submitQueryBtn'),
+                    copyEndpointBtn: document.getElementById('copyEndpoint'),
+                    copyResponseBtn: document.getElementById('copyResponse')
+                },
+                quickAccessModal: new bootstrap.Modal(document.getElementById('quickAccessModal')),
+                // Elemen yang diisi dari settings.json
+                pageTitle: document.getElementById('page'),
+                wm: document.getElementById('wm'),
+                appName: document.getElementById('name'),
+                sideNavName: document.getElementById('sideNavName'),
+                versionBadge: document.getElementById('version'),
+                versionHeaderBadge: document.getElementById('versionHeader'),
+                appDescription: document.getElementById('description'),
+                dynamicImage: document.getElementById('dynamicImage'),
+                apiLinksContainer: document.getElementById('apiLinks')
+            };
+
+            let settings = {};
+            let currentApiData = null;
+            let allNotifications = [];
+
+            // --- Fungsi Utilitas ---
+            const showToast = (message, type = 'info', title = 'Notifikasi') => {
+                if (!DOM.notificationToast) return;
+                const toastBody = DOM.notificationToast.querySelector('.toast-body');
+                const toastTitleEl = DOM.notificationToast.querySelector('.toast-title');
+                const toastIcon = DOM.notificationToast.querySelector('.toast-icon');
+                
+                toastBody.textContent = message;
+                toastTitleEl.textContent = title;
+                
+                const typeConfig = {
+                    success: { color: 'var(--success-color)', icon: 'fa-check-circle' },
+                    error: { color: 'var(--error-color)', icon: 'fa-exclamation-circle' },
+                    info: { color: 'var(--primary-color)', icon: 'fa-info-circle' },
+                    notification: { color: 'var(--accent-color)', icon: 'fa-bell' }
+                };
+                
+                const config = typeConfig[type] || typeConfig.info;
+                
+                DOM.notificationToast.style.borderLeftColor = config.color;
+                toastIcon.className = `toast-icon fas ${config.icon} me-2`;
+                toastIcon.style.color = config.color;
+
+                let bsToast = bootstrap.Toast.getInstance(DOM.notificationToast);
+                if (!bsToast) {
+                    bsToast = new bootstrap.Toast(DOM.notificationToast);
+                }
+                bsToast.show();
+            };
+
+            const copyToClipboard = async (text, btnElement) => {
+                if (!navigator.clipboard) {
+                    showToast('Browser tidak mendukung penyalinan ke clipboard.', 'error');
+                    return;
+                }
+                try {
+                    await navigator.clipboard.writeText(text);
+                    const originalIcon = btnElement.innerHTML;
+                    btnElement.innerHTML = '<i class="fas fa-check"></i>';
+                    btnElement.classList.add('copy-success');
+                    showToast('Berhasil disalin ke clipboard!', 'success');
+                    
+                    setTimeout(() => {
+                        btnElement.innerHTML = originalIcon;
+                        btnElement.classList.remove('copy-success');
+                    }, 1500);
+                } catch (err) {
+                    showToast('Gagal menyalin teks: ' + err.message, 'error');
+                }
+            };
+
+            const debounce = (func, delay) => {
+                let timeout;
+                return (...args) => {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), delay);
+                };
+            };
+
+            // --- Fungsi Notifikasi ---
+            const loadNotifications = async () => {
+                try {
+                    const response = await fetch('/notifications.json');
+                    if (!response.ok) throw new Error(`Gagal memuat notifikasi: ${response.status}`);
+                    allNotifications = await response.json();
+                    updateNotificationBadge();
+                } catch (error) {
+                    console.error('Error loading notifications:', error);
+                }
+            };
+
+            const getSessionReadNotificationIds = () => {
+                const ids = sessionStorage.getItem('sessionReadNotificationIds');
+                return ids ? JSON.parse(ids) : [];
+            };
+
+            const addSessionReadNotificationId = (id) => {
+                let ids = getSessionReadNotificationIds();
+                if (!ids.includes(id)) {
+                    ids.push(id);
+                    sessionStorage.setItem('sessionReadNotificationIds', JSON.stringify(ids));
+                }
+            };
+            
+            const updateNotificationBadge = () => {
+                if (!DOM.notificationBadge || !allNotifications.length) {
+                     if(DOM.notificationBadge) DOM.notificationBadge.classList.remove('active');
+                    return;
+                }
+
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const sessionReadIds = getSessionReadNotificationIds();
+
+                const unreadNotifications = allNotifications.filter(notif => {
+                    const notificationDate = new Date(notif.date);
+                    notificationDate.setHours(0, 0, 0, 0);
+                    return !notif.read && notificationDate <= today && !sessionReadIds.includes(notif.id);
+                });
+
+                if (unreadNotifications.length > 0) {
+                    DOM.notificationBadge.classList.add('active');
+                    DOM.notificationBell.setAttribute('aria-label', `Notifikasi (${unreadNotifications.length} belum dibaca)`);
+                } else {
+                    DOM.notificationBadge.classList.remove('active');
+                    DOM.notificationBell.setAttribute('aria-label', 'Tidak ada notifikasi baru');
+                }
+            };
+
+            const handleNotificationBellClick = () => {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const sessionReadIds = getSessionReadNotificationIds();
+
+                const notificationsToShow = allNotifications.filter(notif => {
+                    const notificationDate = new Date(notif.date);
+                    notificationDate.setHours(0, 0, 0, 0);
+                    return !notif.read && notificationDate <= today && !sessionReadIds.includes(notif.id);
+                });
+
+                if (notificationsToShow.length > 0) {
+                    notificationsToShow.forEach(notif => {
+                        showToast(notif.message, 'notification', `Notifikasi (${new Date(notif.date).toLocaleDateString('id-ID')})`);
+                        addSessionReadNotificationId(notif.id);
+                    });
+                } else {
+                    showToast('Tidak ada notifikasi baru saat ini.', 'info');
+                }
+                
+                updateNotificationBadge();
+            };
+
+            // --- Inisialisasi dan Event Listener Utama ---
+            const init = async () => {
+                setupEventListeners();
+                initTheme();
+                initSideNav();
+                initModal();
+                await loadNotifications();
+                
+                try {
+                    const response = await fetch('/src/settings.json');
+                    if (!response.ok) throw new Error(`Gagal memuat pengaturan: ${response.status}`);
+                    settings = await response.json();
+                    populatePageContent();
+                    renderApiCategories();
+                    observeApiItems();
+                } catch (error) {
+                    console.error('Error loading settings:', error);
+                    showToast(`Gagal memuat pengaturan: ${error.message}`, 'error');
+                    displayErrorState("Tidak dapat memuat konfigurasi API.");
+                } finally {
+                    hideLoadingScreen();
+                }
+            };
+
+            const setupEventListeners = () => {
+                if (DOM.navCollapseBtn) DOM.navCollapseBtn.addEventListener('click', toggleSideNavCollapse);
+                if (DOM.menuToggle) DOM.menuToggle.addEventListener('click', toggleSideNavMobile);
+                if (DOM.themeToggle) DOM.themeToggle.addEventListener('change', handleThemeToggle);
+                if (DOM.searchInput) DOM.searchInput.addEventListener('input', debounce(handleSearch, 300));
+                if (DOM.clearSearchBtn) DOM.clearSearchBtn.addEventListener('click', clearSearch);
+                
+                if (DOM.notificationBell) DOM.notificationBell.addEventListener('click', handleNotificationBellClick);
+                if (DOM.backToTop) DOM.backToTop.addEventListener('click', scrollToTop);
+                if (DOM.quickAccessBtn) DOM.quickAccessBtn.addEventListener('click', () => DOM.quickAccessModal.show());
+
+                if (DOM.apiContent) DOM.apiContent.addEventListener('click', handleApiGetButtonClick);
+
+                if (DOM.modal.copyEndpointBtn) DOM.modal.copyEndpointBtn.addEventListener('click', () => copyToClipboard(DOM.modal.endpoint.textContent, DOM.modal.copyEndpointBtn));
+                if (DOM.modal.copyResponseBtn) DOM.modal.copyResponseBtn.addEventListener('click', () => copyToClipboard(DOM.modal.content.textContent, DOM.modal.copyResponseBtn));
+                if (DOM.modal.submitBtn) DOM.modal.submitBtn.addEventListener('click', handleSubmitQuery);
+
+                window.addEventListener('scroll', handleScroll);
+                document.addEventListener('click', closeSideNavOnClickOutside);
+            };
+
+            // --- Manajemen Loading Screen ---
+            const hideLoadingScreen = () => {
+                if (!DOM.loadingScreen) return;
+                const loadingDots = DOM.loadingScreen.querySelector(".loading-dots");
+                if (loadingDots && loadingDots.intervalId) clearInterval(loadingDots.intervalId);
+
+                DOM.loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    DOM.loadingScreen.style.display = "none";
+                    DOM.body.classList.remove("no-scroll");
+                }, 500);
+            };
+            
+            const animateLoadingDots = () => {
+                const loadingDots = DOM.loadingScreen.querySelector(".loading-dots");
+                if (loadingDots) {
+                    loadingDots.intervalId = setInterval(() => {
+                        if (loadingDots.textContent.length >= 3) {
+                            loadingDots.textContent = '.';
+                        } else {
+                            loadingDots.textContent += '.';
+                        }
+                    }, 500);
+                }
+            };
+            animateLoadingDots();
+
+            // --- Manajemen Tema ---
+            const initTheme = () => {
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const savedTheme = localStorage.getItem('darkMode');
+                if (savedTheme === 'true' || (savedTheme === null && prefersDark)) {
+                    DOM.body.classList.add('dark-mode');
+                    if (DOM.themeToggle) DOM.themeToggle.checked = true;
+                }
+            };
+
+            const handleThemeToggle = () => {
+                DOM.body.classList.toggle('dark-mode');
+                const isDarkMode = DOM.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', isDarkMode);
+                showToast(`Beralih ke mode ${isDarkMode ? 'gelap' : 'terang'}`, 'success');
+            };
+
+            // --- Manajemen Navigasi Samping ---
+            const initSideNav = () => {
+                if (DOM.sideNav && DOM.navCollapseBtn) {
+                     const isCollapsed = DOM.sideNav.classList.contains('collapsed');
+                     DOM.navCollapseBtn.setAttribute('aria-expanded', !isCollapsed);
+                }
+            };
+            
+            const toggleSideNavCollapse = () => {
+                if (!DOM.sideNav || !DOM.mainWrapper || !DOM.navCollapseBtn) return;
+                DOM.sideNav.classList.toggle('collapsed');
+                DOM.mainWrapper.classList.toggle('nav-collapsed');
+                const isExpanded = !DOM.sideNav.classList.contains('collapsed');
+                DOM.navCollapseBtn.setAttribute('aria-expanded', isExpanded);
+            };
+
+            const toggleSideNavMobile = () => {
+                if (!DOM.sideNav || !DOM.menuToggle) return;
+                DOM.sideNav.classList.toggle('active');
+                const isActive = DOM.sideNav.classList.contains('active');
+                DOM.menuToggle.setAttribute('aria-expanded', isActive);
+            };
+
+            const closeSideNavOnClickOutside = (e) => {
+                if (!DOM.sideNav || !DOM.menuToggle) return;
+                if (window.innerWidth < 992 &&
+                    !DOM.sideNav.contains(e.target) &&
+                    !DOM.menuToggle.contains(e.target) &&
+                    DOM.sideNav.classList.contains('active')) {
+                    DOM.sideNav.classList.remove('active');
+                    DOM.menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            };
+            
+            const handleScroll = () => {
+                const scrollPosition = window.scrollY;
+                const headerElement = document.querySelector('.main-header');
+                const headerHeight = headerElement ? parseInt(getComputedStyle(headerElement).height) : 80;
+                
+                // Tampilkan/menyembunyikan tombol kembali ke atas
+                if (DOM.backToTop) {
+                    if (scrollPosition > 300) {
+                        DOM.backToTop.style.display = 'flex';
+                    } else {
+                        DOM.backToTop.style.display = 'none';
+                    }
+                }
+                
+                // Highlight navigasi saat scroll
+                document.querySelectorAll('section[id]').forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 20;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    const navLink = document.querySelector(`.side-nav-link[href="#${sectionId}"]`);
+                    if (navLink) {
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            document.querySelectorAll('.side-nav-link.active').forEach(l => {
+                                l.classList.remove('active');
+                                l.removeAttribute('aria-current');
+                            });
+                            navLink.classList.add('active');
+                            navLink.setAttribute('aria-current', 'page');
+                        }
+                    }
+                });
+            };
+
+            const scrollToTop = () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            // --- Inisialisasi Modal ---
+            const initModal = () => {
+                if (DOM.modal.element) {
+                    DOM.modal.instance = new bootstrap.Modal(DOM.modal.element);
+                }
+            };
+
+            // --- Pengisian Konten Halaman ---
+            const setPageContent = (element, value, fallback = '') => {
+                if (element) element.textContent = value || fallback;
+            };
+            
+            const setPageAttribute = (element, attribute, value, fallback = '') => {
+                if (element) element.setAttribute(attribute, value || fallback);
+            };
+
+            const populatePageContent = () => {
+                if (!settings || Object.keys(settings).length === 0) return;
+
+                const currentYear = new Date().getFullYear();
+                const creator = settings.apiSettings?.creator || 'LynnSatoru';
+
+                setPageContent(DOM.pageTitle, settings.name, "LynnSatoru API");
+                setPageContent(DOM.wm, `© ${currentYear} ${creator}. Semua hak dilindungi.`);
+                setPageContent(DOM.appName, settings.name, "LynnSatoru");
+                setPageContent(DOM.sideNavName, settings.name || "LynnSatoru");
+                setPageContent(DOM.versionBadge, settings.version, "developers");
+                setPageContent(DOM.versionHeaderBadge, settings.header?.status, "developers");
+                setPageContent(DOM.appDescription, settings.description, "Antarmuka dokumentasi API dengan fitur lengkap.");
+
+                // Mengatur gambar banner
+                if (DOM.dynamicImage) {
+                    if (settings.bannerImage) {
+                        DOM.dynamicImage.src = settings.bannerImage;
+                        DOM.dynamicImage.alt = settings.name ? `${settings.name} Banner` : "LynnSatoru Banner";
+                        DOM.dynamicImage.style.display = '';
+                    } else {
+                        DOM.dynamicImage.src = '/src/banner.jpg';
+                        DOM.dynamicImage.alt = "LynnSatoru Banner Default";
+                        DOM.dynamicImage.style.display = '';
+                    }
+                    DOM.dynamicImage.onerror = () => {
+                        DOM.dynamicImage.src = '/src/banner.jpg';
+                        DOM.dynamicImage.alt = "LynnSatoru Banner Fallback";
+                        DOM.dynamicImage.style.display = '';
+                        showToast('Gagal memuat gambar banner, menggunakan gambar default.', 'warning');
+                    };
+                }
+                
+                if (DOM.apiLinksContainer) {
+                    DOM.apiLinksContainer.innerHTML = '';
+                    const defaultLinks = [
+                        { url: "https://github.com/LynnSatoru/LynnSatoru-API", name: "Lihat di GitHub", icon: "fab fa-github" },
+                        { url: "#apis", name: "Jelajahi API", icon: "fas fa-rocket" }
+                    ];
+                    const linksToRender = settings.links?.length ? settings.links : defaultLinks;
+
+                    linksToRender.forEach(({ url, name, icon }, index) => {
+                        const link = document.createElement('a');
+                        link.href = url;
+                        if (url.startsWith('http')) {
+                            link.target = '_blank';
+                            link.rel = 'noopener noreferrer';
+                        }
+                        link.className = 'api-link btn btn-primary';
+                        link.style.animationDelay = `${index * 0.1}s`;
+                        link.setAttribute('aria-label', name);
+                        
+                        const iconElement = document.createElement('i');
+                        iconElement.className = icon || 'fas fa-external-link-alt';
+                        iconElement.setAttribute('aria-hidden', 'true');
+                        
+                        link.appendChild(iconElement);
+                        link.appendChild(document.createTextNode(` ${name}`));
+                        DOM.apiLinksContainer.appendChild(link);
+                    });
+                }
+            };
+
+            // --- Render Kategori dan Item API ---
+            const renderApiCategories = () => {
+                if (!DOM.apiContent || !settings.categories || !settings.categories.length) {
+                    displayErrorState("Tidak ada kategori API yang ditemukan.");
+                    return;
+                }
+                DOM.apiContent.innerHTML = '';
+
+                settings.categories.forEach((category, categoryIndex) => {
+                    const sortedItems = category.items.sort((a, b) => a.name.localeCompare(b.name));
+                    
+                    const categorySection = document.createElement('section');
+                    categorySection.id = `category-${category.name.toLowerCase().replace(/\s+/g, '-')}`;
+                    categorySection.className = 'category-section';
+                    categorySection.style.animationDelay = `${categoryIndex * 0.15}s`;
+                    categorySection.setAttribute('aria-labelledby', `category-title-${categoryIndex}`);
+                    
+                    const categoryHeader = document.createElement('h3');
+                    categoryHeader.id = `category-title-${categoryIndex}`;
+                    categoryHeader.className = 'category-header';
+                    
+                    if (category.icon) {
+                        const iconEl = document.createElement('i');
+                        iconEl.className = `${category.icon} me-2`;
+                        iconEl.setAttribute('aria-hidden', 'true');
+                        categoryHeader.appendChild(iconEl);
+                    }
+                    categoryHeader.appendChild(document.createTextNode(category.name));
+                    categorySection.appendChild(categoryHeader);
+                    
+                    if (category.image) {
+                        const img = document.createElement('img');
+                        img.src = category.image;
+                        img.alt = `${category.name} banner`;
+                        img.className = 'category-image img-fluid rounded mb-3 shadow-sm';
+                        img.loading = 'lazy';
+                        categorySection.appendChild(img);
+                    }
+
+                    const itemsRow = document.createElement('div');
+                    itemsRow.className = 'row';
+                    
+                    sortedItems.forEach((item, itemIndex) => {
+                        const itemCol = document.createElement('div');
+                        itemCol.className = 'col-12 col-md-6 col-lg-4 api-item';
+                        itemCol.dataset.name = item.name;
+                        itemCol.dataset.desc = item.desc;
+                        itemCol.dataset.category = category.name;
+                        itemCol.style.animationDelay = `${itemIndex * 0.05 + 0.2}s`;
+
+                        const apiCard = document.createElement('article');
+                        apiCard.className = 'api-card h-100';
+                        apiCard.setAttribute('aria-labelledby', `api-title-${categoryIndex}-${itemIndex}`);
+
+                        const cardInfo = document.createElement('div');
+                        cardInfo.className = 'api-card-info';
+
+                        const itemTitle = document.createElement('h5');
+                        itemTitle.id = `api-title-${categoryIndex}-${itemIndex}`;
+                        itemTitle.className = 'mb-1';
+                        itemTitle.textContent = item.name;
+                        
+                        const itemDesc = document.createElement('p');
+                        itemDesc.className = 'text-muted mb-0';
+                        itemDesc.textContent = item.desc;
+                        
+                        cardInfo.appendChild(itemTitle);
+                        cardInfo.appendChild(itemDesc);
+                        
+                        const actionsDiv = document.createElement('div');
+                        actionsDiv.className = 'api-actions mt-auto';
+                        
+                        const getBtn = document.createElement('button');
+                        getBtn.type = 'button';
+                        getBtn.className = 'btn get-api-btn btn-sm';
+                        getBtn.innerHTML = '<i class="fas fa-code me-1" aria-hidden="true"></i> GET';
+                        getBtn.dataset.apiPath = item.path;
+                        getBtn.dataset.apiName = item.name;
+                        getBtn.dataset.apiDesc = item.desc;
+                        if (item.params) getBtn.dataset.apiParams = JSON.stringify(item.params);
+                        if (item.innerDesc) getBtn.dataset.apiInnerDesc = item.innerDesc;
+                        getBtn.setAttribute('aria-label', `Dapatkan detail untuk ${item.name}`);
+                        
+                        const status = item.status || "ready";
+                        const statusConfig = {
+                            ready: { class: "status-ready", icon: "fa-check-circle", text: "Ready" },
+                            error: { class: "status-error", icon: "fa-exclamation-triangle", text: "Error" },
+                            update: { class: "status-update", icon: "fa-sync-alt", text: "Update" }
+                        };
+                        const currentStatus = statusConfig[status] || statusConfig.ready;
+
+                        if (status === 'error' || status === 'update') {
+                            getBtn.disabled = true;
+                            apiCard.classList.add('api-card-unavailable');
+                            getBtn.title = `API ini sedang dalam status '${status}', sementara tidak dapat digunakan.`;
+                        }
+
+                        const statusIndicator = document.createElement('div');
+                        statusIndicator.className = `api-status ${currentStatus.class}`;
+                        statusIndicator.title = `Status: ${currentStatus.text}`;
+                        statusIndicator.innerHTML = `<i class="fas ${currentStatus.icon} me-1" aria-hidden="true"></i><span>${currentStatus.text}</span>`;
+                        
+                        actionsDiv.appendChild(getBtn);
+                        actionsDiv.appendChild(statusIndicator);
+                        
+                        apiCard.appendChild(cardInfo);
+                        apiCard.appendChild(actionsDiv);
+                        itemCol.appendChild(apiCard);
+                        itemsRow.appendChild(itemCol);
+                    });
+                    
+                    categorySection.appendChild(itemsRow);
+                    DOM.apiContent.appendChild(categorySection);
+                });
+                initializeTooltips();
+            };
+
+            const displayErrorState = (message) => {
+                if (!DOM.apiContent) return;
+                DOM.apiContent.innerHTML = `
+                    <div class="no-results-message text-center p-5">
+                        <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+                        <p class="h5">${message}</p>
+                        <p class="text-muted">Silakan coba muat ulang halaman atau hubungi administrator.</p>
+                        <button class="btn btn-primary mt-3" onclick="location.reload()">
+                            <i class="fas fa-sync-alt me-2"></i> Muat Ulang
+                        </button>
+                    </div>
+                `;
+            };
+            
+            // --- Fungsi Pencarian ---
+            const handleSearch = () => {
+                if (!DOM.searchInput || !DOM.apiContent) return;
+                const searchTerm = DOM.searchInput.value.toLowerCase().trim();
+                DOM.clearSearchBtn.classList.toggle('visible', searchTerm.length > 0);
+
+                const apiItems = DOM.apiContent.querySelectorAll('.api-item');
+                let visibleCategories = new Set();
+
+                apiItems.forEach(item => {
+                    const name = (item.dataset.name || '').toLowerCase();
+                    const desc = (item.dataset.desc || '').toLowerCase();
+                    const category = (item.dataset.category || '').toLowerCase();
+                    const matches = name.includes(searchTerm) || desc.includes(searchTerm) || category.includes(searchTerm);
+                    
+                    item.style.display = matches ? '' : 'none';
+                    if (matches) {
+                        visibleCategories.add(item.closest('.category-section'));
+                    }
+                });
+
+                DOM.apiContent.querySelectorAll('.category-section').forEach(section => {
+                    section.style.display = visibleCategories.has(section) ? '' : 'none';
+                });
+
+                const noResultsMsg = DOM.apiContent.querySelector('#noResultsMessage') || createNoResultsMessage();
+                const allHidden = Array.from(visibleCategories).length === 0 && searchTerm.length > 0;
+                
+                if (allHidden) {
+                    noResultsMsg.querySelector('span').textContent = `"${searchTerm}"`;
+                    noResultsMsg.style.display = 'flex';
+                } else {
+                    noResultsMsg.style.display = 'none';
+                }
+            };
+
+            const clearSearch = () => {
+                if (!DOM.searchInput) return;
+                DOM.searchInput.value = '';
+                DOM.searchInput.focus();
+                handleSearch();
+                DOM.searchInput.classList.add('shake-animation');
+                setTimeout(() => DOM.searchInput.classList.remove('shake-animation'), 400);
+            };
+
+            const createNoResultsMessage = () => {
+                let noResultsMsg = document.getElementById('noResultsMessage');
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMessage';
+                    noResultsMsg.className = 'no-results-message flex-column align-items-center justify-content-center p-5 text-center';
+                    noResultsMsg.style.display = 'none';
+                    noResultsMsg.innerHTML = `
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <p class="h5">Tidak ada hasil untuk <span></span></p>
+                        <button id="clearSearchFromMsg" class="btn btn-primary mt-3">
+                            <i class="fas fa-times me-2"></i> Hapus Pencarian
+                        </button>
+                    `;
+                    DOM.apiContent.appendChild(noResultsMsg);
+                    document.getElementById('clearSearchFromMsg').addEventListener('click', clearSearch);
+                }
+                return noResultsMsg;
+            };
+
+            // --- Penanganan Klik Tombol API ---
+            const handleApiGetButtonClick = (event) => {
+                const getApiBtn = event.target.closest('.get-api-btn');
+                if (!getApiBtn || getApiBtn.disabled) return;
+
+                getApiBtn.classList.add('pulse-animation');
+                setTimeout(() => getApiBtn.classList.remove('pulse-animation'), 300);
+
+                currentApiData = {
+                    path: getApiBtn.dataset.apiPath,
+                    name: getApiBtn.dataset.apiName,
+                    desc: getApiBtn.dataset.apiDesc,
+                    params: getApiBtn.dataset.apiParams ? JSON.parse(getApiBtn.dataset.apiParams) : null,
+                    innerDesc: getApiBtn.dataset.apiInnerDesc
+                };
+                
+                setupModalForApi(currentApiData);
+                DOM.modal.instance.show();
+            };
+
+            const setupModalForApi = (apiData) => {
+                DOM.modal.label.textContent = apiData.name;
+                DOM.modal.desc.textContent = apiData.desc;
+                DOM.modal.content.innerHTML = '';
+                DOM.modal.endpoint.textContent = `${window.location.origin}${apiData.path.split('?')[0]}`;
+                
+                DOM.modal.spinner.classList.add('d-none');
+                DOM.modal.content.classList.add('d-none');
+                DOM.modal.container.classList.add('d-none');
+                DOM.modal.endpoint.classList.remove('d-none');
+
+                DOM.modal.queryInputContainer.innerHTML = '';
+                DOM.modal.submitBtn.classList.add('d-none');
+                DOM.modal.submitBtn.disabled = true;
+                DOM.modal.submitBtn.innerHTML = '<span>Kirim</span><i class="fas fa-paper-plane ms-2" aria-hidden="true"></i>';
+
+                const paramsFromPath = new URLSearchParams(apiData.path.split('?')[1]);
+                const paramKeys = Array.from(paramsFromPath.keys());
+
+                if (paramKeys.length > 0) {
+                    const paramContainer = document.createElement('div');
+                    paramContainer.className = 'param-container';
+
+                    const formTitle = document.createElement('h6');
+                    formTitle.className = 'param-form-title';
+                    formTitle.innerHTML = '<i class="fas fa-sliders-h me-2" aria-hidden="true"></i> Parameter';
+                    paramContainer.appendChild(formTitle);
+
+                    paramKeys.forEach(paramKey => {
+                        const paramGroup = document.createElement('div');
+                        paramGroup.className = 'param-group mb-3';
+
+                        const labelContainer = document.createElement('div');
+                        labelContainer.className = 'param-label-container';
+                        
+                        const label = document.createElement('label');
+                        label.className = 'form-label';
+                        label.textContent = paramKey;
+                        label.htmlFor = `param-${paramKey}`;
+                        
+                        const requiredSpan = document.createElement('span');
+                        requiredSpan.className = 'required-indicator ms-1';
+                        requiredSpan.textContent = '*';
+                        label.appendChild(requiredSpan);
+                        labelContainer.appendChild(label);
+
+                        if (apiData.params && apiData.params[paramKey]) {
+                            const tooltipIcon = document.createElement('i');
+                            tooltipIcon.className = 'fas fa-info-circle param-info ms-1';
+                            tooltipIcon.setAttribute('data-bs-toggle', 'tooltip');
+                            tooltipIcon.setAttribute('data-bs-placement', 'top');
+                            tooltipIcon.title = apiData.params[paramKey];
+                            labelContainer.appendChild(tooltipIcon);
+                        }
+                        paramGroup.appendChild(labelContainer);
+                        
+                        const inputContainer = document.createElement('div');
+                        inputContainer.className = 'input-container';
+                        const inputField = document.createElement('input');
+                        inputField.type = 'text';
+                        inputField.className = 'form-control custom-input';
+                        inputField.id = `param-${paramKey}`;
+                        inputField.placeholder = `Masukkan ${paramKey}...`;
+                        inputField.dataset.param = paramKey;
+                        inputField.required = true;
+                        inputField.autocomplete = "off";
+                        inputField.addEventListener('input', validateModalInputs);
+                        inputContainer.appendChild(inputField);
+                        paramGroup.appendChild(inputContainer);
+                        paramContainer.appendChild(paramGroup);
+                    });
+
+                    if (apiData.innerDesc) {
+                        const innerDescDiv = document.createElement('div');
+                        innerDescDiv.className = 'inner-desc mt-3';
+                        innerDescDiv.innerHTML = `<i class="fas fa-info-circle me-2" aria-hidden="true"></i> ${apiData.innerDesc.replace(/\n/g, '<br>')}`;
+                        paramContainer.appendChild(innerDescDiv);
+                    }
+
+                    DOM.modal.queryInputContainer.appendChild(paramContainer);
+                    DOM.modal.submitBtn.classList.remove('d-none');
+                    initializeTooltips(DOM.modal.queryInputContainer);
+                } else {
+                    handleApiRequest(`${window.location.origin}${apiData.path}`, apiData.name);
+                }
+            };
+            
+            const validateModalInputs = () => {
+                const inputs = DOM.modal.queryInputContainer.querySelectorAll('input[required]');
+                const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+                DOM.modal.submitBtn.disabled = !allFilled;
+                DOM.modal.submitBtn.classList.toggle('btn-active', allFilled);
+
+                inputs.forEach(input => {
+                    if (input.value.trim()) input.classList.remove('is-invalid');
+                });
+                const errorMsg = DOM.modal.queryInputContainer.querySelector('.alert.alert-danger.fade-in');
+                if (errorMsg && allFilled) {
+                     errorMsg.classList.replace('fade-in', 'fade-out');
+                     setTimeout(() => errorMsg.remove(), 300);
+                }
+            };
+
+            const handleSubmitQuery = async () => {
+                if (!currentApiData) return;
+
+                const inputs = DOM.modal.queryInputContainer.querySelectorAll('input');
+                const newParams = new URLSearchParams();
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (input.required && !input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                        input.parentElement.classList.add('shake-animation');
+                        setTimeout(() => input.parentElement.classList.remove('shake-animation'), 500);
+                    } else {
+                        input.classList.remove('is-invalid');
+                        if (input.value.trim()) newParams.append(input.dataset.param, input.value.trim());
+                    }
+                });
+
+                if (!isValid) {
+                    let errorMsg = DOM.modal.queryInputContainer.querySelector('.alert.alert-danger');
+                    if (!errorMsg) {
+                        errorMsg = document.createElement('div');
+                        errorMsg.className = 'alert alert-danger mt-3';
+                        errorMsg.setAttribute('role', 'alert');
+                        DOM.modal.queryInputContainer.appendChild(errorMsg);
+                    }
+                    errorMsg.innerHTML = '<i class="fas fa-exclamation-circle me-2"></i> Harap isi semua kolom yang wajib diisi.';
+                    errorMsg.classList.remove('fade-out');
+                    errorMsg.classList.add('fade-in');
+
+                    DOM.modal.submitBtn.classList.add('shake-animation');
+                    setTimeout(() => DOM.modal.submitBtn.classList.remove('shake-animation'), 500);
+                    return;
+                }
+                
+                DOM.modal.submitBtn.disabled = true;
+                DOM.modal.submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Memproses...';
+
+                const apiUrlWithParams = `${window.location.origin}${currentApiData.path.split('?')[0]}?${newParams.toString()}`;
+                DOM.modal.endpoint.textContent = apiUrlWithParams;
+
+                if (DOM.modal.queryInputContainer.firstChild) {
+                    DOM.modal.queryInputContainer.firstChild.classList.add('fade-out');
+                    setTimeout(() => {
+                         if (DOM.modal.queryInputContainer.firstChild) DOM.modal.queryInputContainer.firstChild.style.display = 'none';
+                    }, 300);
+                }
+                
+                await handleApiRequest(apiUrlWithParams, currentApiData.name);
+            };
+
+            const handleApiRequest = async (apiUrl, apiName) => {
+                DOM.modal.spinner.classList.remove('d-none');
+                DOM.modal.container.classList.add('d-none');
+                DOM.modal.content.innerHTML = '';
+
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 20000);
+
+                    const response = await fetch(apiUrl, { signal: controller.signal });
+                    clearTimeout(timeoutId);
+
+                    if (!response.ok) {
+                         const errorData = await response.json().catch(() => ({ message: response.statusText }));
+                         throw new Error(`HTTP error! Status: ${response.status} - ${errorData.message || response.statusText}`);
+                    }
+
+                    const contentType = response.headers.get('Content-Type');
+                    if (contentType && contentType.includes('image/')) {
+                        const blob = await response.blob();
+                        const imageUrl = URL.createObjectURL(blob);
+                        const img = document.createElement('img');
+                        img.src = imageUrl;
+                        img.alt = apiName;
+                        img.className = 'response-image img-fluid rounded shadow-sm fade-in';
+                        
+                        const downloadBtn = document.createElement('a');
+                        downloadBtn.href = imageUrl;
+                        downloadBtn.download = `${apiName.toLowerCase().replace(/\s+/g, '-')}.${blob.type.split('/')[1] || 'png'}`;
+                        downloadBtn.className = 'btn btn-primary mt-3 w-100';
+                        downloadBtn.innerHTML = '<i class="fas fa-download me-2"></i> Unduh Gambar';
+                        
+                        DOM.modal.content.appendChild(img);
+                        DOM.modal.content.appendChild(downloadBtn);
+
+                    } else if (contentType && contentType.includes('application/json')) {
+                        const data = await response.json();
+                        const formattedJson = syntaxHighlightJson(JSON.stringify(data, null, 2));
+                        DOM.modal.content.innerHTML = formattedJson;
+                        if (JSON.stringify(data, null, 2).split('\n').length > 20) {
+                            addCodeFolding(DOM.modal.content);
+                        }
+                    } else {
+                        const textData = await response.text();
+                        DOM.modal.content.textContent = textData || "Respons tidak memiliki konten atau format tidak dikenal.";
+                    }
+
+                    DOM.modal.container.classList.remove('d-none');
+                    DOM.modal.content.classList.remove('d-none');
+                    DOM.modal.container.classList.add('slide-in-bottom');
+                    showToast(`Berhasil mengambil data untuk ${apiName}`, 'success');
+
+                } catch (error) {
+                    console.error("API Request Error:", error);
+                    const errorHtml = `
+                        <div class="error-container text-center p-3">
+                            <i class="fas fa-exclamation-triangle fa-2x text-danger mb-2"></i>
+                            <h6 class="text-danger">Terjadi Kesalahan</h6>
+                            <p class="text-muted small">${error.message || 'Tidak dapat mengambil data dari server.'}</p>
+                            ${currentApiData && currentApiData.path.split('?')[1] ? 
+                            `<button class="btn btn-sm btn-outline-primary mt-2 retry-query-btn">
+                                <i class="fas fa-sync-alt me-1"></i> Coba Lagi
+                            </button>` : ''}
+                        </div>`;
+                    DOM.modal.content.innerHTML = errorHtml;
+                    DOM.modal.container.classList.remove('d-none');
+                    DOM.modal.content.classList.remove('d-none');
+                    showToast('Gagal mengambil data. Periksa detail di modal.', 'error');
+
+                    const retryBtn = DOM.modal.content.querySelector('.retry-query-btn');
+                    if (retryBtn) {
+                        retryBtn.onclick = () => {
+                            if (DOM.modal.queryInputContainer.firstChild) {
+                                 DOM.modal.queryInputContainer.firstChild.style.display = '';
+                                 DOM.modal.queryInputContainer.firstChild.classList.remove('fade-out');
+                            }
+                            DOM.modal.submitBtn.disabled = false;
+                            DOM.modal.submitBtn.innerHTML = '<span>Kirim</span><i class="fas fa-paper-plane ms-2" aria-hidden="true"></i>';
+                            DOM.modal.container.classList.add('d-none');
+                        };
+                    }
+
+                } finally {
+                    DOM.modal.spinner.classList.add('d-none');
+                    if (DOM.modal.submitBtn) {
+                        const hasParams = currentApiData && currentApiData.path && currentApiData.path.includes('?');
+                        const hasError = DOM.modal.content.querySelector('.error-container');
+                        const hasRetryButton = DOM.modal.content.querySelector('.retry-query-btn');
+
+                        if (!hasParams || (hasError && !hasRetryButton)) {
+                            DOM.modal.submitBtn.disabled = !hasParams;
+                            DOM.modal.submitBtn.innerHTML = '<span>Kirim</span><i class="fas fa-paper-plane ms-2" aria-hidden="true"></i>';
+                        }
+                     }
+                }
+            };
+            
+            // --- Fungsi Pembantu untuk Tampilan Kode ---
+            const syntaxHighlightJson = (json) => {
+                json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, (match) => {
+                    let cls = 'json-number';
+                    if (/^"/.test(match)) {
+                        cls = /:$/.test(match) ? 'json-key' : 'json-string';
+                    } else if (/true|false/.test(match)) {
+                        cls = 'json-boolean';
+                    } else if (/null/.test(match)) {
+                        cls = 'json-null';
+                    }
+                    return `<span class="${cls}">${match}</span>`;
+                });
+            };
+
+            const addCodeFolding = (container) => {
+                const lines = container.innerHTML.split('\n');
+                let currentLevel = 0;
+                let foldableHtml = '';
+                let inFoldableBlock = false;
+
+                lines.forEach((line, index) => {
+                    const trimmedLine = line.trim();
+                    if (trimmedLine.endsWith('{') || trimmedLine.endsWith('[')) {
+                        if (currentLevel === 0) {
+                            foldableHtml += `<div class="code-fold-trigger" data-folded="false" role="button" tabindex="0" aria-expanded="true">${line}<span class="fold-indicator ms-2 small text-muted">(<i class="fas fa-chevron-down"></i> Lipat)</span></div><div class="code-fold-content">`;
+                            inFoldableBlock = true;
+                        } else {
+                            foldableHtml += line + '\n';
+                        }
+                        currentLevel++;
+                    } else if (trimmedLine.startsWith('}') || trimmedLine.startsWith(']')) {
+                        currentLevel--;
+                        foldableHtml += line + '\n';
+                        if (currentLevel === 0 && inFoldableBlock) {
+                            foldableHtml += '</div>';
+                            inFoldableBlock = false;
+                        }
+                    } else {
+                        foldableHtml += line + (index === lines.length - 1 ? '' : '\n');
+                    }
+                });
+                container.innerHTML = foldableHtml;
+
+                container.querySelectorAll('.code-fold-trigger').forEach(trigger => {
+                    trigger.addEventListener('click', () => toggleFold(trigger));
+                    trigger.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleFold(trigger);
+                        }
+                    });
+                });
+            };
+
+            const toggleFold = (trigger) => {
+                const content = trigger.nextElementSibling;
+                const isFolded = trigger.dataset.folded === 'true';
+                const indicator = trigger.querySelector('.fold-indicator');
+
+                if (isFolded) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    trigger.dataset.folded = "false";
+                    trigger.setAttribute('aria-expanded', 'true');
+                    indicator.innerHTML = '(<i class="fas fa-chevron-up"></i> Tutup)';
+                } else {
+                    content.style.maxHeight = "0px";
+                    trigger.dataset.folded = "true";
+                    trigger.setAttribute('aria-expanded', 'false');
+                    indicator.innerHTML = '(<i class="fas fa-chevron-down"></i> Buka)';
+                }
+            };
+            
+            // --- Observasi Item API untuk Animasi ---
+            const observeApiItems = () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view', 'slideInUp');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.api-item:not(.in-view)').forEach(item => {
+                    observer.observe(item);
+                });
+            };
+
+            // --- Inisialisasi Tooltip ---
+            const initializeTooltips = (parentElement = document) => {
+                const tooltipTriggerList = [].slice.call(parentElement.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                tooltipTriggerList.map(tooltipTriggerEl => {
+                    const existingTooltip = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+                    if (existingTooltip) {
+                        existingTooltip.dispose();
+                    }
+                    return new bootstrap.Tooltip(tooltipTriggerEl);
+                });
+            };
+
+            // Jalankan inisialisasi utama
+            init();
+        });
+    </script>
+</body>
+</html>

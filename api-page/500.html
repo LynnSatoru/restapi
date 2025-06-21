@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>500 - Kesalahan Server</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .rainbow-text {
+      font-size: 8rem;
+      font-weight: 900;
+      background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 1400% 1400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowMove 5s ease-in-out infinite, floatUpDown 3s ease-in-out infinite;
+      text-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+
+    @keyframes rainbowMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .btn-ultra {
+      position: relative;
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .btn-ultra::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 15%, transparent 70%);
+      animation: rotate 6s linear infinite;
+      z-index: 0;
+    }
+
+    .btn-ultra:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff416c, 0 0 40px #ff4b2b;
+    }
+
+    .btn-ultra span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen px-6">
+
+  <div class="text-center fade-in">
+    <h1 class="rainbow-text mb-6">500</h1>
+    <p class="text-2xl text-gray-200 font-semibold mb-3">Ups! Terjadi kesalahan di server kami</p>
+    <p class="text-base text-gray-400 mb-10 max-w-xl mx-auto">
+      Server kami sedang tidak bisa merespons permintaanmu. Kami sedang memperbaikinya — silakan kembali beberapa saat lagi atau kunjungi halaman utama.
+    </p>
+
+    <button onclick="window.location.href='/'" class="btn-ultra">
+      <span>🏠 Kembali ke Beranda</span>
+    </button>
+  </div>
+
+</body>
+</html>

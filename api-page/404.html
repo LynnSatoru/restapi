@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 - Halaman Tidak Ditemukan</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Animasi teks 404 */
+    .animate-404 {
+      font-size: 9rem;
+      font-weight: 900;
+      letter-spacing: 5px;
+      color: #ffffff;
+      position: relative;
+      animation: wave 3s infinite ease-in-out;
+      text-shadow: 0 0 10px #8e2de2, 0 0 25px #ec4899;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-15px); }
+      50% { transform: translateY(10px); }
+      75% { transform: translateY(-5px); }
+    }
+
+    /* Tombol ultra modern */
+    .btn-ultra {
+      position: relative;
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .btn-ultra::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 70%);
+      animation: rotate 6s linear infinite;
+      z-index: 0;
+    }
+
+    .btn-ultra:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #8e2de2, 0 0 40px #4a00e0;
+    }
+
+    .btn-ultra span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Gambar graffiti background */
+    .bg-graffiti {
+      background-image: url('https://i.ibb.co/Fz0bBDp/graffiti-404.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen relative px-6">
+
+  <!-- Background graffiti -->
+  <div class="bg-graffiti"></div>
+
+  <!-- Konten Utama -->
+  <div class="text-center z-10 fade-in">
+    <h1 class="animate-404 mb-6">404</h1>
+    <p class="text-2xl text-gray-200 font-semibold mb-2">Oops! Halaman ini tidak tersedia</p>
+    <p class="text-base text-gray-400 mb-10 max-w-xl mx-auto">
+      Kami tidak dapat menemukan halaman yang kamu cari. Mungkin sudah dipindahkan, dihapus, atau URL-nya salah ketik. Yuk kembali ke jalan yang benar!
+    </p>
+
+    <button onclick="window.location.href='/'" class="btn-ultra">
+      <span>🏠 Kembali ke Beranda</span>
+    </button>
+  </div>
+
+</body>
+</html>
