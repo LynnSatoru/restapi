@@ -1,59 +1,66 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="mystic">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Dokumentasi API modern LynnSatoru dengan antarmuka pengujian interaktif. Jelajahi berbagai endpoint API dengan mudah.">
-    <meta name="keywords" content="API, Dokumentasi API, REST API, LynnSatoru, Alat Pengembang">
+    <meta name="description" content="API (Application Programming Interface) adalah antarmuka yang memungkinkan dua sistem atau aplikasi berbeda untuk saling berkomunikasi dan bertukar data secara otomatis. API bekerja sebagai jembatan digital yang memberikan akses ke fungsi atau layanan tertentu tanpa perlu mengetahui bagaimana sistem tersebut bekerja di dalamnya..">
+    <meta name="keywords" content="API, Dokumentasi API, REST API, LynnSatoru">
     <meta name="author" content="LynnSatoru">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lynnsatoru.example.com">
-    <meta property="og:title" content="LynnSatoru - Dokumentasi API">
-    <meta property="og:description" content="Antarmuka dokumentasi API dengan fitur lengkap.">
+    <meta property="og:title" content="LynnSatoru - Portal API">
+    <meta property="og:description" content="API (Application Programming Interface) adalah antarmuka yang memungkinkan dua sistem atau aplikasi berbeda untuk saling berkomunikasi dan bertukar data secara otomatis. API bekerja sebagai jembatan digital yang memberikan akses ke fungsi atau layanan tertentu tanpa perlu mengetahui bagaimana sistem tersebut bekerja di dalamnya..">
     <meta property="og:image" content="/src/banner.jpg">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://lynnsatoru.example.com">
-    <meta property="twitter:title" content="LynnSatoru - Dokumentasi API">
-    <meta property="twitter:description" content="Antarmuka dokumentasi API dengan fitur lengkap.">
+    <meta property="twitter:title" content="LynnSatoru - Portal API">
+    <meta property="twitter:description" content="API (Application Programming Interface) adalah antarmuka yang memungkinkan dua sistem atau aplikasi berbeda untuk saling berkomunikasi dan bertukar data secara otomatis. API bekerja sebagai jembatan digital yang memberikan akses ke fungsi atau layanan tertentu tanpa perlu mengetahui bagaimana sistem tersebut bekerja di dalamnya..">
     <meta property="twitter:image" content="/src/banner.jpg">
     <link rel="icon" href="/src/icon.png" type="image/png">
     <title id="page">LynnSatoru API</title>
+    
+    <!-- Font & Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"/>
+    
+    <!-- Particle.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
     <style>
         :root {
-            /* Warna Premium - Gradien Ungu-Emerald */
-            --primary-color: #7c4dff;
-            --primary-hover: #651fff;
-            --secondary-color: #b388ff;
-            --accent-color: #00e5ff;
-            --success-color: #00c853;
-            --error-color: #ff5252;
-            --warning-color: #ffab00;
-            --info-color: #536dfe;
+            /* Warna Dimensi Misterius */
+            --primary-color: #7d4eff;
+            --primary-hover: #5e2eff;
+            --secondary-color: #b18aff;
+            --accent-color: #00f7ff;
+            --success-color: #00ff9d;
+            --error-color: #ff3d71;
+            --warning-color: #ffcc00;
+            --info-color: #00b8ff;
             
-            /* Light Mode */
-            --background-color: #f8f9fe;
-            --card-background: #ffffff;
-            --text-color: #263238;
-            --text-muted: #607d8b;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --highlight-color: rgba(124, 77, 255, 0.1);
+            /* Dark Mode Default */
+            --background-color: #0a0a15;
+            --card-background: #12122a;
+            --text-color: #e0e0ff;
+            --text-muted: #a0a0cc;
+            --border-color: rgba(124, 77, 255, 0.15);
+            --highlight-color: rgba(125, 78, 255, 0.25);
             
             /* UI Elements */
-            --border-radius-sm: 10px;
+            --border-radius-sm: 8px;
             --border-radius: 16px;
             --border-radius-lg: 24px;
-            --shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-            --hover-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-            --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --hover-shadow: 0 12px 48px rgba(125, 78, 255, 0.4);
+            --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+            --glow-effect: 0 0 15px rgba(125, 78, 255, 0.7);
             
             /* Animasi */
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --hover-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --hover-transform: translateY(-5px) scale(1.02);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --hover-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --hover-transform: translateY(-8px) scale(1.03);
             
             /* Spacing */
             --space-xs: 6px;
@@ -69,24 +76,20 @@
             --header-height: 80px;
             
             /* Background values for rgba */
-            --background-color-rgb: 248, 249, 254;
+            --background-color-rgb: 10, 10, 21;
         }
 
-        .dark-mode {
-            --primary-color: #b388ff;
-            --primary-hover: #9575cd;
-            --secondary-color: #7c4dff;
-            --accent-color: #00e5ff;
-            --background-color: #1a1a2e;
-            --card-background: #252545;
-            --text-color: #e0e0e0;
-            --text-muted: #b0bec5;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --highlight-color: rgba(179, 136, 255, 0.2);
-            --shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-            --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-            --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-            --background-color-rgb: 26, 26, 46;
+        .light-mode {
+            --background-color: #f0f0ff;
+            --card-background: #ffffff;
+            --text-color: #1a1a3a;
+            --text-muted: #5a5a8a;
+            --border-color: rgba(125, 78, 255, 0.1);
+            --highlight-color: rgba(125, 78, 255, 0.15);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 12px 48px rgba(125, 78, 255, 0.2);
+            --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+            --background-color-rgb: 240, 240, 255;
         }
 
         * {
@@ -102,12 +105,16 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             color: var(--text-color);
             background-color: var(--background-color);
             line-height: 1.7;
             transition: var(--transition);
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(125, 78, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 247, 255, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
         body.no-scroll {
@@ -116,7 +123,8 @@
 
         /* Typography */
         h1, h2, h3, h4, h5, h6 {
-            font-weight: 800;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 0.75em;
             color: var(--text-color);
@@ -128,14 +136,14 @@
         }
 
         a {
-            color: var(--primary-color);
+            color: var(--accent-color);
             text-decoration: none;
             transition: var(--transition);
         }
 
         a:hover {
-            color: var(--primary-hover);
-            text-decoration: underline;
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
         /* Gradient Text */
@@ -155,6 +163,23 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Neon Effect */
+        .neon-text {
+            text-shadow: 0 0 5px var(--primary-color), 
+                         0 0 10px var(--primary-color), 
+                         0 0 20px var(--primary-color);
+            animation: neon-pulse 2s infinite alternate;
+        }
+
+        @keyframes neon-pulse {
+            from { text-shadow: 0 0 5px var(--primary-color), 
+                             0 0 10px var(--primary-color), 
+                             0 0 20px var(--primary-color); }
+            to { text-shadow: 0 0 10px var(--primary-color), 
+                           0 0 20px var(--primary-color), 
+                           0 0 30px var(--primary-color); }
+        }
+
         /* Buttons */
         .btn {
             font-weight: 600;
@@ -170,6 +195,9 @@
             line-height: 1.2;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .btn:focus, .btn:focus-visible {
@@ -180,15 +208,13 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            box-shadow: 0 6px 12px rgba(124, 77, 255, 0.25);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            box-shadow: var(--glow-effect);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
             transform: var(--hover-transform);
-            box-shadow: 0 8px 20px rgba(124, 77, 255, 0.35);
+            box-shadow: var(--hover-shadow);
             color: white;
         }
 
@@ -214,7 +240,7 @@
         }
 
         .btn-primary:disabled {
-            background: linear-gradient(135deg, #b0b5f3, #c4d9f3);
+            background: linear-gradient(135deg, #555, #777);
             cursor: not-allowed;
             opacity: 0.7;
             transform: none;
@@ -230,9 +256,11 @@
             font-size: 0.85rem;
             border-radius: 100px;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+            box-shadow: var(--glow-effect);
             white-space: nowrap;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
         }
 
         /* Animasi */
@@ -246,6 +274,11 @@
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
         @keyframes dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; } }
         @keyframes rotate-spinner { 100% { transform: rotate(360deg); } }
+        @keyframes dimension-pulse {
+            0% { box-shadow: 0 0 10px var(--primary-color); }
+            50% { box-shadow: 0 0 20px var(--accent-color); }
+            100% { box-shadow: 0 0 10px var(--primary-color); }
+        }
 
         /* Layout Structure */
         .main-wrapper {
@@ -254,6 +287,8 @@
             transition: margin-left var(--transition);
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
 
         .main-wrapper.nav-collapsed {
@@ -267,7 +302,8 @@
             top: 0;
             height: 100vh;
             width: var(--side-nav-width);
-            background-color: var(--card-background);
+            background-color: rgba(18, 18, 42, 0.9);
+            backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             z-index: 1000;
             transition: width var(--transition), transform var(--transition);
@@ -288,6 +324,7 @@
             padding: 0 var(--space-lg);
             margin-bottom: var(--space-xl);
             gap: var(--space-sm);
+            position: relative;
         }
 
         .side-nav-logo img {
@@ -295,8 +332,9 @@
             height: 44px;
             border-radius: 12px;
             object-fit: cover;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: var(--glow-effect);
             transition: var(--transition);
+            z-index: 2;
         }
 
         .side-nav-logo #sideNavName {
@@ -306,6 +344,8 @@
             transition: opacity var(--transition), transform var(--transition);
             white-space: nowrap;
             letter-spacing: -0.5px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(125, 78, 255, 0.5);
         }
 
         .side-nav.collapsed .side-nav-logo {
@@ -349,6 +389,7 @@
             gap: var(--space-md);
             white-space: nowrap;
             border-radius: var(--border-radius-sm);
+            position: relative;
         }
 
         .side-nav-link i {
@@ -361,6 +402,7 @@
         .side-nav-link:hover i,
         .side-nav-link.active i {
             transform: scale(1.15);
+            color: var(--primary-color);
         }
 
         .side-nav-link span {
@@ -369,10 +411,26 @@
         }
 
         .side-nav-link:hover, .side-nav-link.active {
-            color: var(--primary-color);
+            color: var(--accent-color);
             background-color: var(--highlight-color);
             border-left-color: var(--primary-color);
             text-decoration: none;
+        }
+
+        .side-nav-link:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .side-nav-link:hover:after {
+            opacity: 0.5;
         }
 
         .side-nav.collapsed .side-nav-link {
@@ -393,7 +451,7 @@
             right: -16px;
             width: 36px;
             height: 36px;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -408,7 +466,8 @@
 
         .nav-collapse-btn:hover {
             transform: scale(1.1) rotate(180deg);
-            background-color: var(--primary-hover);
+            background: linear-gradient(135deg, var(--primary-hover), var(--secondary-color));
+            box-shadow: var(--hover-shadow);
         }
 
         .side-nav.collapsed .nav-collapse-btn i {
@@ -420,7 +479,8 @@
             position: sticky;
             top: 0;
             height: var(--header-height);
-            background-color: var(--card-background);
+            background-color: rgba(18, 18, 42, 0.9);
+            backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             display: flex;
             align-items: center;
@@ -465,7 +525,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            background-color: var(--background-color);
+            background-color: var(--card-background);
             transition: var(--hover-transition);
             border: 1px solid var(--border-color);
         }
@@ -574,6 +634,7 @@
             border-radius: 50%;
             border: 2px solid var(--card-background);
             display: none;
+            box-shadow: 0 0 10px var(--error-color);
         }
 
         .notification-badge.active {
@@ -589,10 +650,6 @@
             overflow: hidden;
             min-height: calc(100vh - var(--header-height));
             background: linear-gradient(135deg, rgba(var(--background-color-rgb),0.85), rgba(var(--background-color-rgb),1) 70%);
-        }
-
-        .dark-mode .hero-section {
-            background: linear-gradient(135deg, rgba(var(--background-color-rgb),0.9), rgba(var(--background-color-rgb),1) 70%);
         }
 
         .hero-content {
@@ -616,6 +673,8 @@
             font-weight: 900;
             margin-bottom: 0;
             line-height: 1.1;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 20px rgba(125, 78, 255, 0.5);
         }
 
         .hero-description {
@@ -696,6 +755,7 @@
             position: relative;
             z-index: 3;
             border: 1px solid var(--border-color);
+            animation: dimension-pulse 4s infinite;
         }
 
         .banner-container:hover {
@@ -721,7 +781,7 @@
             opacity: 0.1;
             animation: float 10s infinite alternate;
             display: block;
-            filter: blur(20px);
+            filter: blur(40px);
         }
 
         .shape-1 {
@@ -754,6 +814,8 @@
         .api-section {
             padding: var(--space-xxl) var(--space-xl);
             background-color: var(--background-color);
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
@@ -762,6 +824,7 @@
             position: relative;
             display: inline-block;
             color: var(--text-color);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .section-title::after {
@@ -773,6 +836,7 @@
             height: 5px;
             background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             border-radius: 4px;
+            box-shadow: 0 0 10px var(--primary-color);
         }
 
         .section-description {
@@ -799,6 +863,7 @@
             gap: var(--space-sm);
             padding-left: var(--space-sm);
             border-left: 5px solid var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .category-image {
@@ -867,6 +932,17 @@
             height: 100%;
         }
 
+        .api-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(125, 78, 255, 0.05), rgba(0, 247, 255, 0.05));
+            z-index: 0;
+        }
+
         .api-card::after {
             content: '';
             position: absolute;
@@ -884,6 +960,7 @@
         .api-card:hover {
             box-shadow: var(--hover-shadow);
             transform: var(--hover-transform);
+            border-color: var(--primary-color);
         }
 
         .api-card:hover::after {
@@ -915,6 +992,8 @@
 
         .api-card-info {
             margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
         }
 
         .api-card h5 {
@@ -942,6 +1021,8 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
+            position: relative;
+            z-index: 1;
         }
 
         .get-api-btn {
@@ -1007,18 +1088,21 @@
         }
 
         .status-ready {
-            background-color: rgba(0, 200, 83, 0.15);
+            background-color: rgba(0, 255, 157, 0.15);
             color: var(--success-color);
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
         }
 
         .status-error {
-            background-color: rgba(255, 82, 82, 0.15);
+            background-color: rgba(255, 61, 113, 0.15);
             color: var(--error-color);
+            box-shadow: 0 0 10px rgba(255, 61, 113, 0.2);
         }
 
         .status-update {
-            background-color: rgba(255, 171, 0, 0.15);
+            background-color: rgba(255, 204, 0, 0.15);
             color: var(--warning-color);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
         }
 
         .api-status i {
@@ -1086,9 +1170,12 @@
         .main-footer {
             margin-top: auto;
             padding: var(--space-lg) var(--space-xl);
-            background-color: var(--card-background);
+            background-color: rgba(18, 18, 42, 0.9);
+            backdrop-filter: blur(10px);
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
+            position: relative;
+            z-index: 2;
         }
 
         .footer-content {
@@ -1206,6 +1293,19 @@
             padding: var(--space-lg);
             overflow: hidden;
             border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1050;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(125, 78, 255, 0.05), rgba(0, 247, 255, 0.05));
+            z-index: -1;
         }
 
         .modal-header {
@@ -1221,6 +1321,7 @@
             color: var(--text-color);
             font-size: 1.4rem;
             line-height: 1.3;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .modal-desc {
@@ -1417,7 +1518,7 @@
 
         .custom-input.is-invalid {
             border-color: var(--error-color);
-            box-shadow: 0 0 0 4px rgba(255, 82, 82, 0.1);
+            box-shadow: 0 0 0 4px rgba(255, 61, 113, 0.1);
         }
 
         .shake-animation {
@@ -1560,11 +1661,22 @@
         .json-null { color: var(--error-color); }
         .json-key { color: var(--warning-color); }
 
-        .dark-mode .json-string { color: #7ee787; }
-        .dark-mode .json-number { color: #79c0ff; }
-        .dark-mode .json-boolean { color: #ff7b72; }
-        .dark-mode .json-null { color: #ff7b72; }
-        .dark-mode .json-key { color: #ffa657; }
+        .light-mode .json-string { color: #00a86b; }
+        .light-mode .json-number { color: #0077cc; }
+        .light-mode .json-boolean { color: #7d4eff; }
+        .light-mode .json-null { color: #ff3d71; }
+        .light-mode .json-key { color: #ff9900; }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
@@ -1597,7 +1709,7 @@
             }
             .side-nav {
                 transform: translateX(-100%);
-                box-shadow: 0 0 30px rgba(0,0,0,0.25);
+                box-shadow: 0 0 30px rgba(0,0,0,0.5);
             }
             .side-nav.active {
                 transform: translateX(0);
@@ -1842,7 +1954,7 @@
 
         /* Tooltip custom style */
         .tooltip {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 0.85rem;
         }
 
@@ -1891,9 +2003,68 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-hover);
         }
+
+        /* Dimensional Portal Effect */
+        .dimensional-portal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.1;
+            filter: blur(50px);
+            z-index: -1;
+            animation: portal-pulse 8s infinite alternate;
+        }
+
+        @keyframes portal-pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.15; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+        }
+
+        /* Holographic Effect */
+        .holographic-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holographic-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 45%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 55%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: holographic-effect 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes holographic-effect {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
     </style>
 </head>
 <body>
+    <!-- Particle.js Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Dimensional Portal Effect -->
+    <div class="dimensional-portal"></div>
+    
     <div id="loadingScreen" role="status" aria-live="polite">
         <div class="spinner-wrapper">
             <svg class="spinner-logo" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
@@ -1914,19 +2085,19 @@
         <nav class="side-nav-links" aria-label="Tautan navigasi">
             <a href="#home" class="side-nav-link active" aria-current="page">
                 <i class="fas fa-home" aria-hidden="true"></i>
-                <span>Beranda</span>
+                <span>Portal Utama</span>
             </a>
             <a href="#apis" class="side-nav-link">
                 <i class="fas fa-plug" aria-hidden="true"></i>
-                <span>API</span>
+                <span>Jalur API</span>
             </a>
             <a href="#documentation" class="side-nav-link">
                 <i class="fas fa-book" aria-hidden="true"></i>
-                <span>Dokumentasi</span>
+                <span>Arsip Data</span>
             </a>
             <a href="https://github.com/LynnSatoru" target="_blank" rel="noopener noreferrer" class="side-nav-link">
                 <i class="fab fa-github" aria-hidden="true"></i>
-                <span>GitHub</span>
+                <span>Portal GitHub</span>
             </a>
             <a href="#support" class="side-nav-link">
                 <i class="fas fa-headset" aria-hidden="true"></i>
@@ -1948,7 +2119,7 @@
             <div class="search-container" role="search">
                 <div class="input-group">
                     <span class="input-group-text" aria-hidden="true"><i class="fas fa-search"></i></span>
-                    <input type="text" id="searchInput" class="form-control" placeholder="Cari API..." aria-label="Cari API">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Pindai API..." aria-label="Cari API">
                     <button class="clear-search" id="clearSearch" aria-label="Hapus pencarian">
                         <i class="fas fa-times" aria-hidden="true"></i>
                     </button>
@@ -1971,14 +2142,14 @@
             <section id="home" class="hero-section" aria-labelledby="heroHeading">
                 <div class="hero-content">
                     <div class="hero-heading">
-                        <h1 id="name" class="gradient-text">LynnSatoru</h1>
+                        <h1 id="name" class="gradient-text neon-text">LynnSatoru</h1>
                         <div id="version" class="badge-pill">developers</div>
                     </div>
                     
-                    <p id="description" class="hero-description">Antarmuka dokumentasi API dengan fitur lengkap.</p>
+                    <p id="description" class="hero-description">API (Application Programming Interface) adalah antarmuka yang memungkinkan dua sistem atau aplikasi berbeda untuk saling berkomunikasi dan bertukar data secara otomatis. API bekerja sebagai jembatan digital yang memberikan akses ke fungsi atau layanan tertentu tanpa perlu mengetahui bagaimana sistem tersebut bekerja di dalamnya..</p>
                     <div id="apiLinks" class="hero-actions">
-                        <a href="https://github.com/LynnSatoru/LynnSatoru-API" target="_blank" rel="noopener noreferrer" class="api-link" style="animation-delay: 0s;" aria-label="Lihat di GitHub">
-                            <i class="fab fa-github" aria-hidden="true"></i> Lihat di GitHub
+                        <a href="https://whatsapp.com/channel/0029VauopJb3AzNYgQXmQj2E" target="_blank" rel="noopener noreferrer" class="api-link" style="animation-delay: 0s;" aria-label="Lihat di GitHub">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp
                         </a>
                         <a href="#apis" class="api-link" style="animation-delay: 0.1s;" aria-label="Jelajahi API">
                             <i class="fas fa-rocket" aria-hidden="true"></i> Jelajahi API
@@ -1997,8 +2168,8 @@
             </section>
             
             <section id="apis" class="api-section" aria-labelledby="apiSectionTitle">
-                <h2 id="apiSectionTitle" class="section-title">API yang Tersedia</h2>
-                <p class="section-description">Jelajahi koleksi API kami yang powerful dan mudah digunakan.</p>
+                <h2 id="apiSectionTitle" class="section-title">Jalur API</h2>
+                <p class="section-description">qDapat diintegrasikan ke berbagai platform, termasuk website, aplikasi mobile, dan sistem backend.</p>
                 
                 <div class="tab-content" id="apiContent">
                     <!-- API content will be loaded dynamically -->
@@ -2006,40 +2177,40 @@
             </section>
 
             <section id="documentation" class="api-section" aria-labelledby="docSectionTitle">
-                <h2 id="docSectionTitle" class="section-title">Dokumentasi</h2>
+                <h2 id="docSectionTitle" class="section-title">Arsip Data</h2>
                 <p class="section-description">Pelajari cara menggunakan API LynnSatoru dengan panduan lengkap kami.</p>
                 
                 <div class="row">
                     <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="api-card h-100">
+                        <div class="api-card h-100 holographic-card">
                             <div class="api-card-info">
                                 <h5><i class="fas fa-file-alt me-2 text-primary"></i> Panduan Mulai Cepat</h5>
                                 <p class="text-muted">Pelajari cara cepat mengintegrasikan API LynnSatoru ke dalam aplikasi Anda.</p>
                             </div>
                             <div class="api-actions">
-                                <a href="#" class="btn btn-primary">Baca Panduan</a>
+                                <a href="#" class="btn btn-primary">Akses API</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="api-card h-100">
+                        <div class="api-card h-100 holographic-card">
                             <div class="api-card-info">
                                 <h5><i class="fas fa-code me-2 text-primary"></i> Contoh Kode</h5>
                                 <p class="text-muted">Kumpulan contoh kode dalam berbagai bahasa pemrograman.</p>
                             </div>
                             <div class="api-actions">
-                                <a href="#" class="btn btn-primary">Lihat Contoh</a>
+                                <a href="#" class="btn btn-primary">Jelajahi</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="api-card h-100">
+                        <div class="api-card h-100 holographic-card">
                             <div class="api-card-info">
                                 <h5><i class="fas fa-video me-2 text-primary"></i> Video Tutorial</h5>
                                 <p class="text-muted">Tutorial video langkah demi langkah untuk pemula.</p>
                             </div>
                             <div class="api-actions">
-                                <a href="#" class="btn btn-primary">Tonton Sekarang</a>
+                                <a href="#" class="btn btn-primary">Tonton</a>
                             </div>
                         </div>
                     </div>
@@ -2047,29 +2218,29 @@
             </section>
 
             <section id="support" class="api-section" aria-labelledby="supportSectionTitle">
-                <h2 id="supportSectionTitle" class="section-title">Dukungan</h2>
-                <p class="section-description">Kami siap membantu Anda dalam menggunakan API LynnSatoru.</p>
+                <h2 id="supportSectionTitle" class="section-title">Dukungan Dimensi</h2>
+                <p class="section-description">Kami siap membantu Anda dalam menggunakan API LynnSatoru di semua API.</p>
                 
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <div class="api-card h-100">
+                        <div class="api-card h-100 holographic-card">
                             <div class="api-card-info">
                                 <h5><i class="fas fa-comments me-2 text-primary"></i> Forum Komunitas</h5>
-                                <p class="text-muted">Bergabunglah dengan komunitas pengguna LynnSatoru dan dapatkan bantuan dari sesama developer.</p>
+                                <p class="text-muted">Bergabunglah dengan komunitas pengguna LynnSatoru di berbagai informasi.</p>
                             </div>
                             <div class="api-actions">
-                                <a href="#" class="btn btn-primary">Bergabung</a>
+                                <a href="#" class="btn btn-primary">Masuk</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <div class="api-card h-100">
+                        <div class="api-card h-100 holographic-card">
                             <div class="api-card-info">
                                 <h5><i class="fas fa-ticket-alt me-2 text-primary"></i> Tiket Dukungan</h5>
-                                <p class="text-muted">Ajukan tiket dukungan untuk masalah teknis yang Anda hadapi.</p>
+                                <p class="text-muted">Ajukan tiket dukungan untuk masalah teknis.</p>
                             </div>
                             <div class="api-actions">
-                                <a href="#" class="btn btn-primary">Ajukan Tiket</a>
+                                <a href="#" class="btn btn-primary">Buka</a>
                             </div>
                         </div>
                     </div>
@@ -2079,7 +2250,7 @@
         
         <footer class="main-footer" role="contentinfo">
             <div class="footer-content">
-                <div id="wm" class="copyright">&copy; 2024 LynnSatoru. Semua hak dilindungi.</div>
+                <div id="wm" class="copyright">&copy; <span id="currentYear"></span> LynnSatoru. Semua API dilindungi.</div>
                 
                 <div class="footer-middle">
                     <div class="theme-switcher">
@@ -2097,7 +2268,7 @@
                         <i class="fas fa-file-contract" aria-hidden="true"></i> Kebijakan
                     </a>
                     <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">
-                        <i class="fas fa-envelope" aria-hidden="true"></i> Kontak
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Kontak Antar
                     </a>
                     <a href="#" target="_blank" rel="noopener noreferrer" class="footer-link">
                         <i class="fas fa-question-circle" aria-hidden="true"></i> FAQ
@@ -2115,7 +2286,7 @@
     <!-- API Response Modal -->
     <div class="modal fade" id="apiResponseModal" tabindex="-1" aria-labelledby="apiResponseModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" id="modalDialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content holographic-card">
                 <header class="modal-header">
                     <div>
                         <h3 class="modal-title" id="apiResponseModalLabel">Nama API</h3>
@@ -2177,7 +2348,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Tutup"></button>
             </header>
             <div class="toast-body">
-                Ini adalah pesan notifikasi.
+                Pesan notifikasi.
             </div>
         </div>
     </div>
@@ -2185,21 +2356,21 @@
     <!-- Quick Access Modal -->
     <div class="modal fade" id="quickAccessModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content holographic-card">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-bolt me-2 text-warning"></i> Akses Cepat</h5>
+                    <h5 class="modal-title"><i class="fas fa-bolt me-2 text-warning"></i> Portal Akses Cepat</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="list-group">
                         <a href="#home" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
-                            <i class="fas fa-home me-2 text-primary"></i> Beranda
+                            <i class="fas fa-home me-2 text-primary"></i> Portal Utama
                         </a>
                         <a href="#apis" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
-                            <i class="fas fa-plug me-2 text-primary"></i> API
+                            <i class="fas fa-plug me-2 text-primary"></i> Jalur API
                         </a>
                         <a href="#documentation" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
-                            <i class="fas fa-book me-2 text-primary"></i> Dokumentasi
+                            <i class="fas fa-book me-2 text-primary"></i> Arsip Data
                         </a>
                         <a href="#support" class="list-group-item list-group-item-action" data-bs-dismiss="modal">
                             <i class="fas fa-headset me-2 text-primary"></i> Dukungan
@@ -2207,7 +2378,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup Portal</button>
                 </div>
             </div>
         </div>
@@ -2217,8 +2388,120 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        // Inisialisasi Particle.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": ["#7d4eff", "#00f7ff", "#b18aff"]
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 2,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#7d4eff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+
         // Pastikan DOM sudah dimuat sepenuhnya sebelum menjalankan skrip
         document.addEventListener('DOMContentLoaded', async () => {
+            // Set tahun saat ini di footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
             // Selektor Elemen DOM Utama
             const DOM = {
                 loadingScreen: document.getElementById("loadingScreen"),
@@ -2476,15 +2759,17 @@
             const initTheme = () => {
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 const savedTheme = localStorage.getItem('darkMode');
-                if (savedTheme === 'true' || (savedTheme === null && prefersDark)) {
-                    DOM.body.classList.add('dark-mode');
+                if (savedTheme === 'false' || (savedTheme === null && !prefersDark)) {
+                    DOM.body.classList.add('light-mode');
+                    if (DOM.themeToggle) DOM.themeToggle.checked = false;
+                } else {
                     if (DOM.themeToggle) DOM.themeToggle.checked = true;
                 }
             };
 
             const handleThemeToggle = () => {
-                DOM.body.classList.toggle('dark-mode');
-                const isDarkMode = DOM.body.classList.contains('dark-mode');
+                DOM.body.classList.toggle('light-mode');
+                const isDarkMode = !DOM.body.classList.contains('light-mode');
                 localStorage.setItem('darkMode', isDarkMode);
                 showToast(`Beralih ke mode ${isDarkMode ? 'gelap' : 'terang'}`, 'success');
             };
@@ -2583,16 +2868,15 @@
             const populatePageContent = () => {
                 if (!settings || Object.keys(settings).length === 0) return;
 
-                const currentYear = new Date().getFullYear();
                 const creator = settings.apiSettings?.creator || 'LynnSatoru';
 
-                setPageContent(DOM.pageTitle, settings.name, "LynnSatoru API");
-                setPageContent(DOM.wm, `© ${currentYear} ${creator}. Semua hak dilindungi.`);
-                setPageContent(DOM.appName, settings.name, "LynnSatoru");
+                setPageContent(DOM.pageTitle, settings.name ? `${settings.name} | API` : "LynnSatoru API");
+                setPageContent(DOM.wm, `© ${new Date().getFullYear()} ${creator}. Semua dimensi dilindungi.`);
+                setPageContent(DOM.appName, settings.name || "LynnSatoru");
                 setPageContent(DOM.sideNavName, settings.name || "LynnSatoru");
-                setPageContent(DOM.versionBadge, settings.version, "developers");
-                setPageContent(DOM.versionHeaderBadge, settings.header?.status, "developers");
-                setPageContent(DOM.appDescription, settings.description, "Antarmuka dokumentasi API dengan fitur lengkap.");
+                setPageContent(DOM.versionBadge, settings.version || "developers");
+                setPageContent(DOM.versionHeaderBadge, settings.header?.status || "developers");
+                setPageContent(DOM.appDescription, settings.description || "API (Application Programming Interface) adalah antarmuka yang memungkinkan dua sistem atau aplikasi berbeda untuk saling berkomunikasi dan bertukar data secara otomatis. API bekerja sebagai jembatan digital yang memberikan akses ke fungsi atau layanan tertentu tanpa perlu mengetahui bagaimana sistem tersebut bekerja di dalamnya..");
 
                 // Mengatur gambar banner
                 if (DOM.dynamicImage) {
@@ -2616,7 +2900,7 @@
                 if (DOM.apiLinksContainer) {
                     DOM.apiLinksContainer.innerHTML = '';
                     const defaultLinks = [
-                        { url: "https://github.com/LynnSatoru/LynnSatoru-API", name: "Lihat di GitHub", icon: "fab fa-github" },
+                        { url: "https://whatsapp.com/channel/0029VauopJb3AzNYgQXmQj2E", name: "Whatsapp", icon: "fab fa-whatsapp" },
                         { url: "#apis", name: "Jelajahi API", icon: "fas fa-rocket" }
                     ];
                     const linksToRender = settings.links?.length ? settings.links : defaultLinks;
@@ -2694,7 +2978,7 @@
                         itemCol.style.animationDelay = `${itemIndex * 0.05 + 0.2}s`;
 
                         const apiCard = document.createElement('article');
-                        apiCard.className = 'api-card h-100';
+                        apiCard.className = 'api-card h-100 holographic-card';
                         apiCard.setAttribute('aria-labelledby', `api-title-${categoryIndex}-${itemIndex}`);
 
                         const cardInfo = document.createElement('div');
@@ -2884,7 +3168,7 @@
 
                     const formTitle = document.createElement('h6');
                     formTitle.className = 'param-form-title';
-                    formTitle.innerHTML = '<i class="fas fa-sliders-h me-2" aria-hidden="true"></i> Parameter';
+                    formTitle.innerHTML = '<i class="fas fa-sliders-h me-2" aria-hidden="true"></i> Parameter LynnSatoru';
                     paramContainer.appendChild(formTitle);
 
                     paramKeys.forEach(paramKey => {
