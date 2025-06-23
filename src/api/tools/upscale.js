@@ -13,15 +13,23 @@ class IllariaUpscaler {
 
     async upload(buffer) {
         try {
+            if (!Buffer.isBuffer(buffer)) throw new Error('Upload gagal: input bukan buffer');
+
             const upload_id = this.generateSession();
-            const orig_name = `rynn_${Date.now()}.jpg`;
+            const orig_name = `LynnSatoru_${Date.now()}.jpg`;
+
             const form = new FormData();
             form.append('files', buffer, orig_name);
+
             const { data } = await axios.post(`${this.api_url}/upload?upload_id=${upload_id}`, form, {
                 headers: {
                     ...form.getHeaders()
                 }
             });
+
+            if (!data || !data[0]) {
+                throw new Error('Gagal upload gambar ke server Illaria');
+            }
 
             return {
                 orig_name,
@@ -29,7 +37,7 @@ class IllariaUpscaler {
                 url: `${this.file_url}${data[0]}`
             };
         } catch (error) {
-            throw new Error(error.message);
+            throw new Error(`Upload error: ${error.message}`);
         }
     }
 
@@ -42,7 +50,7 @@ class IllariaUpscaler {
                 fase_enhancement = false
             } = options;
 
-            const _model = [
+            const availableModels = [
                 'RealESRGAN_x4plus',
                 'RealESRNet_x4plus',
                 'RealESRGAN_x4plus_anime_6B',
@@ -50,20 +58,22 @@ class IllariaUpscaler {
                 'realesr-general-x4v3'
             ];
 
-            if (!Buffer.isBuffer(buffer)) throw new Error('Image buffer is required');
-            if (!_model.includes(model)) throw new Error(`Available models: ${_model.join(', ')}`);
-            if (denoice_strength > 1) throw new Error('Max denoice strength: 1');
-            if (resolution > 6) throw new Error('Max resolution: 6');
-            if (typeof fase_enhancement !== 'boolean') throw new Error('Fase enhancement must be boolean');
+            // Validasi parameter
+            if (!Buffer.isBuffer(buffer)) throw new Error('Gambar tidak valid');
+            if (!availableModels.includes(model)) throw new Error(`Model tidak dikenali. Gunakan: ${availableModels.join(', ')}`);
+            if (denoice_strength < 0 || denoice_strength > 1) throw new Error('Denoice strength harus antara 0 dan 1');
+            if (resolution < 1 || resolution > 6) throw new Error('Resolusi harus antara 1 dan 6');
+            if (typeof fase_enhancement !== 'boolean') throw new Error('Fase enhancement harus true atau false');
 
-            const image_url = await this.upload(buffer);
+            const image = await this.upload(buffer);
             const session_hash = this.generateSession();
-            const d = await axios.post(`${this.api_url}/queue/join?`, {
+
+            await axios.post(`${this.api_url}/queue/join?`, {
                 data: [
                     {
-                        path: image_url.path,
-                        url: image_url.url,
-                        orig_name: image_url.orig_name,
+                        path: image.path,
+                        url: image.url,
+                        orig_name: image.orig_name,
                         size: buffer.length,
                         mime_type: 'image/jpeg',
                         meta: {
@@ -78,7 +88,7 @@ class IllariaUpscaler {
                 event_data: null,
                 fn_index: 1,
                 trigger_id: 20,
-                session_hash: session_hash
+                session_hash
             });
 
             const { data } = await axios.get(`${this.api_url}/queue/data?session_hash=${session_hash}`);
@@ -87,14 +97,19 @@ class IllariaUpscaler {
             const lines = data.split('\n\n');
             for (const line of lines) {
                 if (line.startsWith('data:')) {
-                    const d = JSON.parse(line.substring(6));
-                    if (d.msg === 'process_completed') result = d.output.data[0].url;
+                    const parsed = JSON.parse(line.slice(6));
+                    if (parsed.msg === 'process_completed') {
+                        result = parsed.output.data[0].url;
+                        break;
+                    }
                 }
             }
 
+            if (!result) throw new Error('Gagal mendapatkan hasil dari Illaria');
+
             return result;
         } catch (error) {
-            throw new Error(error.message);
+            throw new Error(`Upscale error: ${error.message}`);
         }
     }
 }
@@ -106,7 +121,7 @@ module.exports = function (app) {
         try {
             const file = req.files?.image;
             if (!file || !file.data) {
-                return res.status(400).json({ status: false, error: 'Image file is required (form-data with key "image")' });
+                return res.status(400).json({ status: false, error: 'File gambar wajib diisi (form-data key "image")' });
             }
 
             const {
@@ -131,4 +146,4 @@ module.exports = function (app) {
             res.status(500).json({ status: false, error: error.message });
         }
     });
-}
+    }
