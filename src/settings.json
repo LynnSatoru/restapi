@@ -431,6 +431,25 @@
           }
         },
         {
+		  "name": "Upscale Gambar (Illaria)",
+		  "desc": "Meningkatkan kualitas gambar menggunakan model Real-ESRGAN via API Illaria",
+		  "path": "/tools/upscale",
+		  "method": "POST",
+		  "status": "ready",
+		  "params": {
+		    "image": "File gambar JPG/PNG yang akan di-upscale (form-data key 'image')",
+		    "model": "Model upscaling (default: RealESRGAN_x4plus)",
+		    "denoice_strength": "Tingkat pengurangan noise, rentang 0 - 1 (default: 0.5)",
+		    "resolution": "Skala pembesaran gambar, rentang 1 - 6 (default: 4)",
+		    "fase_enhancement": "Peningkatan wajah, boolean true/false (default: false)"
+		  },
+		  "response": {
+		    "status": "true/false",
+		    "result": "URL gambar hasil upscale (jika berhasil)",
+		    "error": "Pesan kesalahan (jika gagal)"
+		  }
+		},
+        {
           "name": "IP Lookup",
           "desc": "Cari informasi lengkap dari alamat IP seperti domain Host, lokasi, dan ISP",
           "path": "/tools/iplookup?apikey=&q=",
@@ -449,20 +468,6 @@
             "emoji": "Emoji yang ingin dikonversi menjadi gif"
           }
         },
-        {
-		  "name": "Upscale Gambar (Illaria)",
-		  "desc": "Meningkatkan kualitas gambar menggunakan model Real-ESRGAN via API Illaria",
-		  "path": "/tools/upscale",
-		  "method": "POST",
-		  "status": "ready",
-		  "params": {
-		    "image": "File gambar JPG/PNG yang akan di-upscale (form-data)",
-		    "model": "Model upscaling (default: RealESRGAN_x4plus)",
-		    "denoice_strength": "Kekuatan denoise antara 0 - 1 (default: 0.5)",
-		    "resolution": "Resolusi antara 1 - 6 (default: 4)",
-		    "fase_enhancement": "Tingkat peningkatan wajah, nilai boolean true/false (default: false)"
-		  }
-		},
         {
           "name": "Emoji Mix",
           "desc": "Emoji mix converter",
