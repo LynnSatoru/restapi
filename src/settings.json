@@ -450,6 +450,20 @@
           }
         },
         {
+		  "name": "Upscale Gambar (Illaria)",
+		  "desc": "Meningkatkan kualitas gambar menggunakan model Real-ESRGAN via API Illaria",
+		  "path": "/ai/upscale",
+		  "method": "POST",
+		  "status": "ready",
+		  "params": {
+		    "image": "File gambar JPG/PNG yang akan di-upscale (form-data)",
+		    "model": "Model upscaling (default: RealESRGAN_x4plus)",
+		    "denoice_strength": "Kekuatan denoise antara 0 - 1 (default: 0.5)",
+		    "resolution": "Resolusi antara 1 - 6 (default: 4)",
+		    "fase_enhancement": "Tingkat peningkatan wajah, nilai boolean true/false (default: false)"
+		  }
+		},
+        {
           "name": "Emoji Mix",
           "desc": "Emoji mix converter",
           "path": "/tools/emojimix?emoji1=&emoji2=",
