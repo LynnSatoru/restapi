@@ -102,8 +102,7 @@ class IllariaUpscaler {
 module.exports = function (app) {
     const illaria = new IllariaUpscaler();
 
-    // Route: /ai/upscale
-    app.post('/ai/upscale', async (req, res) => {
+    app.post('/tools/upscale', async (req, res) => {
         try {
             const file = req.files?.image;
             if (!file || !file.data) {
