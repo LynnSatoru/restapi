@@ -174,6 +174,17 @@
 		    "add_quality_tags": "Tambahkan tag kualitas tinggi (boolean true/false, default: true)"
 		  }
 		},
+		{
+		  "name": "Image Enhancer (ImgLarger)",
+		  "desc": "Melakukan upscale atau peningkatan kualitas gambar menggunakan API imglarger.com",
+		  "path": "/random/imglarger?image=&scale=&type=",
+		  "status": "ready",
+		  "params": {
+		    "image": "File gambar JPG/PNG yang akan diproses (form-data key: image)",
+		    "scale": "Skala pembesaran gambar (2 atau 4) — hanya untuk tipe 'upscale' (default: 2)",
+		    "type": "Jenis proses gambar: 'upscale', 'enhance', atau 'sharpener' (default: upscale)"
+		  }
+		},
         {
           "name": "Pap Ayang",
           "desc": "Random pap ayang",
