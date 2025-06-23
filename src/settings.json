@@ -154,6 +154,27 @@
           }
         },
         {
+		  "name": "Animagine (Image Generation)",
+		  "desc": "Membuat gambar AI bergaya anime menggunakan prompt teks",
+		  "path": "/random/animagine?prompt=&negative_prompt=&width=&height=&guidance_scale=&numInference_steps=&sampler=&aspect_ratio=&style_preset=&use_upscaler=&strength=&upscale_by=&add_quality_tags=",
+		  "status": "ready",
+		  "params": {
+		    "prompt": "Prompt utama untuk menghasilkan gambar",
+		    "negative_prompt": "Prompt negatif untuk menghindari elemen tertentu (default: kualitas rendah, anatomi buruk, dll)",
+		    "width": "Lebar gambar (default: 1024)",
+		    "height": "Tinggi gambar (default: 1024)",
+		    "guidance_scale": "Tingkat kontrol AI terhadap prompt (default: 5)",
+		    "numInference_steps": "Jumlah langkah inferensi (default: 28)",
+		    "sampler": "Algoritma sampling (contoh: Euler a, DDIM, DPM++ 2M Karras)",
+		    "aspect_ratio": "Rasio aspek gambar (contoh: 1:1, 9:7, 7:9, dsb)",
+		    "style_preset": "Gaya visual (contoh: (None), Anim4gine, Pixel art, Toon, 3D, Realistic, dsb)",
+		    "use_upscaler": "Boolean true/false untuk mengaktifkan upscaler (default: false)",
+		    "strength": "Kekuatan efek upscaler (default: 0.55)",
+		    "upscale_by": "Tingkat pembesaran jika upscaler aktif (default: 1.5)",
+		    "add_quality_tags": "Tambahkan tag kualitas tinggi (boolean true/false, default: true)"
+		  }
+		},
+        {
           "name": "Pap Ayang",
           "desc": "Random pap ayang",
           "path": "/random/papayang",
@@ -430,19 +451,6 @@
             "q": "Nama kota atau area yang ingin dicari kode posnya"
           }
         },
-        {
-		  "name": "Upscale Gambar (Illaria)",
-		  "desc": "Meningkatkan kualitas gambar menggunakan model Real-ESRGAN via API Illaria",
-		  "path": "/tools/upscale?image=&model=&denoice_strength=&resolution=&fase_enhancement=",
-		  "status": "ready",
-		  "params": {
-		    "image": "File gambar JPG/PNG (form-data, key: image)",
-		    "model": "Model upscaling (contoh: RealESRGAN_x4plus, RealESRGAN_x2plus, dsb)",
-		    "denoice_strength": "Tingkat pengurangan noise antara 0 sampai 1 (default: 0.5)",
-		    "resolution": "Resolusi pembesaran antara 1 sampai 6 (default: 4)",
-		    "fase_enhancement": "Boolean true/false untuk peningkatan wajah (default: false)"
-		  }
-		},
         {
           "name": "IP Lookup",
           "desc": "Cari informasi lengkap dari alamat IP seperti domain Host, lokasi, dan ISP",
