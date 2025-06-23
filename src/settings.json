@@ -452,7 +452,7 @@
         {
 		  "name": "Upscale Gambar (Illaria)",
 		  "desc": "Meningkatkan kualitas gambar menggunakan model Real-ESRGAN via API Illaria",
-		  "path": "/ai/upscale",
+		  "path": "/tools/upscale",
 		  "method": "POST",
 		  "status": "ready",
 		  "params": {
