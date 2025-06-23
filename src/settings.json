@@ -23,6 +23,15 @@
             "text": "Text for vioo to respond to"
           }
        },
+       {
+          "name": "Gpt 4",
+          "desc": "Talk with Gpt4",
+          "path": "/ai/gpt4?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text atau perintah untuk Gpt4"
+          }
+       },
         {
           "name": "OpenAI",
           "desc": "Openai chat",
